@@ -4,6 +4,7 @@ Android常用的技术功能总结
  >https://www.jianshu.com/p/b5371df6d7cb
  >http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0418/4158.html
  >https://www.jianshu.com/p/1da4541b70ad
+ >https://superxlcr.github.io/2017/04/24/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB%E6%80%BB%E7%BB%93/
  
 ## 1.android进程被杀死的原理
  Android系统把进程的划为了如下几种（重要性从高到低,备注：严格来说是划分了6种）====================
@@ -58,9 +59,31 @@ Android常用的技术功能总结
 详细可看<https://www.jianshu.com/p/1da4541b70ad>
 也可以用adb shell命令行来查看正在运行的service <http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0418/4158.html>
 
- ### 2.3、相互唤醒
+
+ ### 2.3、相互唤醒(以下都是杀死后唤起的操作)
   相互唤醒的意思就是，假如你手机里装了支付宝、淘宝、天猫、UC等阿里系的app，那么你打开任意一个阿里系的app后，有可能就顺便把其他阿里系的app给唤醒了。这个完全有可能的。此外，开机，网络切换、拍照、拍视频时候，利用系统产生的广播也能唤醒app，不过Android N已经将这三种广播取消了。
   如果应用想保活，要是QQ，微信愿意救你也行，有多少手机上没有QQ，微信呢？或者像友盟，信鸽这种推送SDK，也存在唤醒app的功能。
 拉活方法。（LBE安全大师）
+ ### 2.4、JobSheduler
+ JobSheduler是作为进程死后复活的一种手段，native进程方式最大缺点是费电， Native 进程费电的原因是感知主进程是否存活有两种实现方式，在 Native 进程中通过死循环或定时器，轮训判断主进程是否存活，当主进程不存活时进行拉活。其次5.0以上系统不支持。 但是JobSheduler可以替代在Android5.0以上native进程方式，这种方式即使用户强制关闭，也能被拉起来。
+ ### 2.4、粘性服务&与系统服务捆绑
 
- 
+这个是系统自带的，onStartCommand方法必须具有一个整形的返回值，这个整形的返回值用来告诉系统在服务启动完毕后，如果被Kill，系统将如何操作，这种方案虽然可以，但是在某些情况or某些定制ROM上可能失效，一种保保守方案。
+``` java
+public int onStartCommand(Intent intent, int flags, int startId) {
+    return START_REDELIVER_INTENT;
+} 
+``` 
+ START_STICKY
+ 如果系统在onStartCommand返回后被销毁，系统将会重新创建服务并依次调用onCreate和onStartCommand（注意：根据测试Android2.3.3以下版本只会调用  onCreate根本不会调用onStartCommand，Android4.0可以办到），这种相当于服务又重新启动恢复到之前的状态了）。
+ START_NOT_STICKY
+ 如果系统在onStartCommand返回后被销毁，如果返回该值，则在执行完onStartCommand方法后如果Service被杀掉系统将不会重启该服务。
+ START_REDELIVER_INTENT
+ START_STICKY的兼容版本，不同的是其不保证服务被杀后一定能重启
+ 参考<https://superxlcr.github.io/2017/04/24/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB%E6%80%BB%E7%BB%93/>
+<https://blog.csdn.net/aigestudio/article/details/51348408> 
+
+
+听说账号同步唤醒APP这种机制很不错，用户强制停止都杀不起创建一个账号并设置同步器，创建周期同步，系统会自动调用同步器，这样就能激活我们的APP，局限是国产机会修改最短同步周期（魅蓝NOTE2长达30分钟），并且需要联网才能使用。在国内各大ROM"欣欣向荣"的大背景下，关于进程保活，不加入白名单，我也很想知道有没有一个应用永活的方案，这种方案性能好，不费电，或许做不到，或许有牛人可以，但是，通过上面几种措施，在绝大部分的机型下，绝大部分用户手机中，我们的进程寿命确实得到了提高
+
+
