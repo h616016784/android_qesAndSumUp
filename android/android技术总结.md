@@ -56,6 +56,7 @@ Android常用的技术功能总结
 对于 API level >= 18：在需要提优先级的service A启动一个InnerService，两个服务同时startForeground，且绑定同样的 ID。Stop 掉InnerService ，这样通知栏图标即被移除。
 其实Google察觉到了此漏洞的存在，并逐步进行封堵。这就是为什么这种保活方式分 API >= 18 和 API < 18 两种情况，当某一天 API >= 18 的方案也失效的时候，我们就又要另谋出路了
 详细可看<https://www.jianshu.com/p/1da4541b70ad>
+也可以用adb shell命令行来查看正在运行的service <http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0418/4158.html>
 
 
  
