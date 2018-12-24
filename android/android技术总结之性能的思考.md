@@ -43,5 +43,13 @@
   - 使用标签 重用layout
   - 尽量避免使用权重，其会导致绘制两遍
   - 使用延迟加载
-  - 尽可能少用wrap_content。wrap_content 会增加布局 measure 时计算成本，在已知宽高为固定值时，不用wrap_content 。
+  - 尽可能少用wrap_content。wrap_content会增加布局 measure时计算成本，在已知宽高为固定值时，不用wrap_content。
   - Hierarchy View  layout inspace进行层级分析
+  
+  ## 3.2、内存优化
+    内存优化的点有很多,这里我主要分为两大块:
+    ###  Bitmap优化
+      主动释放Bitmap资源，手动调用recycle()方法，释放其Native内存
+      主动释放ImageView的图片资源，避免大图小view显示
+      Png图，NinePatch图多重考虑
+      使用大图之前，尽量先对其进行压缩（尺寸或者清晰度）
