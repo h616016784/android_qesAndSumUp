@@ -48,8 +48,15 @@
   
   ## 3.2、内存优化
     内存优化的点有很多,这里我主要分为两大块:
-    ###  Bitmap优化
+   ###  Bitmap优化
       主动释放Bitmap资源，手动调用recycle()方法，释放其Native内存
       主动释放ImageView的图片资源，避免大图小view显示
       Png图，NinePatch图多重考虑
       使用大图之前，尽量先对其进行压缩（尺寸或者清晰度）
+   ### 防止内存泄露
+    单例（主要原因还是因为一般情况下单例都是全局的，有时候会引用一些实际生命周期比较短的变量，导致其无法释放）
+    静态变量（同样也是因为生命周期比较长）
+    Handler内存泄露[7]
+    context引起的内存泄露
+    匿名内部类（匿名内部类会引用外部类，导致无法释放，比如各种回调）
+    资源使用完未关闭（BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap）
