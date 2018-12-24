@@ -72,7 +72,7 @@
   - 尽量不要使用枚举,少用迭代器
   - 使用android优化过的集合如，用android的稀疏家族（SparseArray内部原理）
   - 对Cursor、Receiver、Sensor、File等对象,要注意它们的创建、回收与注册、反注册
-  - 避免大量使用注解、反射
+  - 避免大量使用注解（现在有编译期就生成代码的可以）、反射
   - 使用RenderScript、OpenGL来进行复杂的绘图操作
   - 使用SurfaceView来替代View进行大量、频繁的绘图操作
   - 尽量使用视图缓存,而不是每次都执行inflate()方法解析视图
