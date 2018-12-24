@@ -73,3 +73,25 @@
   - 使用RenderScript、OpenGL来进行复杂的绘图操作
   - 使用SurfaceView来替代View进行大量、频繁的绘图操作
   - 尽量使用视图缓存,而不是每次都执行inflate()方法解析视图
+  
+  ## 3.4 安装包大小优化
+   ### 3.4.1、不必每个dpi都适配（x xx xxx就可以）
+  建议取720p的资源，放到xhdpi目录
+   ### 3.4.2、建议开启minifyEnabled混淆代码，开启shrinkResources去除无用资源，删除无用的语言资源。
+   使用 lint 去除无用资源文件
+   ### 3.4.3、使用tinypng有损压缩，或者缩小大图、压缩第三库里的大图
+  Tinypng的官方网站：http://tinypng.com/
+   ### 3.4.、4使用jpg格式
+  对于非透明的大图，jpg将会比png的大小有显著的优势
+   ### 3.4.5、使用webp格式，
+  webp支持透明度，压缩比比jpg更高但显示效果却不输于jpg，从Android 4.0+开始原生支持，但是不支持包含透明度，直到Android 4.2.1+才支持显示含透明度的webp，使用时要特别注意。
+  ### 3.4.6、使用shape背景
+  一下的两个方案可选
+  第15条：使用着色方案
+  相信你的工程里也有很多selector文件，也有很多相似的图片只是颜色不同，通过着色方案我们能大大减轻这样的工作量，减少这样的文件。借助于android support库可实现一个全版本兼容的着色方案，参考代码：DrawableLess.java（https://github.com/openproject）
+第12条：使用微信资源压缩打包工具（也许好用？？？）
+其他：删除armable-v7包下的so、删除x86包下的so、避免重复库、使用更小的库、在线化素材库。
+  ## 3.5 耗电优化
+  计算优化，避开浮点运算等。
+  避免 WaleLock 使用不当。
+  使用 Job Scheduler
