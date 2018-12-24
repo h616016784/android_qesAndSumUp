@@ -62,14 +62,14 @@
     资源使用完未关闭（BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap）
     
    ## 3.3 代码优化
-    优化点:
-    - 对常量使用static修饰符
-    - 使用静态方法
-    - 减少不必要的成员变量
-    - 尽量不要使用枚举,少用迭代器
-    - 使用android优化过的集合如，用android的稀疏家族（SparseArray内部原理）
-    - 对Cursor、Receiver、Sensor、File等对象,要注意它们的创建、回收与注册、反注册
-    - 避免大量使用注解、反射
-    - 使用RenderScript、OpenGL来进行复杂的绘图操作
-    - 使用SurfaceView来替代View进行大量、频繁的绘图操作
-    - 尽量使用视图缓存,而不是每次都执行inflate()方法解析视图
+  优化点:
+  - 对常量使用static修饰符
+  - 使用静态方法
+  - 减少不必要的成员变量
+  - 尽量不要使用枚举,少用迭代器
+  - 使用android优化过的集合如，用android的稀疏家族（SparseArray内部原理）
+  - 对Cursor、Receiver、Sensor、File等对象,要注意它们的创建、回收与注册、反注册
+  - 避免大量使用注解、反射
+  - 使用RenderScript、OpenGL来进行复杂的绘图操作
+  - 使用SurfaceView来替代View进行大量、频繁的绘图操作
+  - 尽量使用视图缓存,而不是每次都执行inflate()方法解析视图
