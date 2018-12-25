@@ -46,6 +46,8 @@
   ## 2.1、关于android6.0的权限一下博客（很全了） 
   <https://www.cnblogs.com/JLZT1223/p/8108783.html>
   
+  这个网址更牛b<https://www.jianshu.com/p/a8fd3d1fa0a3>
+  
   
    
   
