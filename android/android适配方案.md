@@ -56,9 +56,9 @@
    <https://segmentfault.com/a/1190000012247350>
    如果特定机型权限不能找到要try一下进行相应处理
    
-     ### 2.2.1、关于权限遇到的问题
-      跳转安装界面崩溃、调用系统照相和裁剪、选择图片等都会遇到问题，参照以下方案
-       <https://blog.csdn.net/sinat_14849739/article/details/65758033>或者
+  ### 2.2.1、关于权限遇到的问题
+  跳转安装界面崩溃、调用系统照相和裁剪、选择图片等都会遇到问题，参照以下方案
+   <https://blog.csdn.net/sinat_14849739/article/details/65758033>或者
         <https://www.cnblogs.com/vijozsoft/p/9304096.html>、<http://yifeng.studio/2017/05/03/android-7-0-compat-fileprovider/>
        <https://juejin.im/post/5974ca356fb9a06bba4746bc>
     
