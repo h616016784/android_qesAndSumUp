@@ -73,6 +73,8 @@ Android 6.0（API 23）以上版本：其实Android6.0以上的实现方式和An
 ## 3.2、解决方案
  可参照 <https://juejin.im/post/5989ded56fb9a03c3b6c8bde> 或者
  <https://www.jianshu.com/p/47f34bee13a9>
+ 
+ 有一个第三方的状态栏更改包ImmersionBar   源码分析：<https://juejin.im/entry/591ec14a570c3500698e848e>
     
     
   
