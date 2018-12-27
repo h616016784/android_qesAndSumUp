@@ -53,7 +53,7 @@
   ## 2.2、解决方案
    一种解决方案是用google提供的EasyPermissions框架,参考如下地址
    <https://segmentfault.com/a/1190000012247350>
-    
+   如果特定机型权限不能找到要try一下进行相应处理
     
     
   
