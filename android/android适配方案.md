@@ -61,6 +61,18 @@
    <https://blog.csdn.net/sinat_14849739/article/details/65758033>或者
         <https://www.cnblogs.com/vijozsoft/p/9304096.html>、<http://yifeng.studio/2017/05/03/android-7-0-compat-fileprovider/>  
        <https://juejin.im/post/5974ca356fb9a06bba4746bc>
+# 3、状态栏适配  
+关于沉浸式大概可以分成三个阶段：
+
+Android4.4（API 19） - Android 5.0（API 21）： 这个阶段可以实现沉浸式，但是表现得还不是很好，实现方式为: 通过FLAG_TRANSLUCENT_STATUS设置状态栏为透明并且为全屏模式，然后通过添加一个与StatusBar 一样大小的View，将View 的 background 设置为我们想要的颜色，从而来实现沉浸式。
+
+Android 5.0（API 21）以上版本： 在Android 5.0的时候，加入了一个重要的属性和方法 android:statusBarColor （对应方法为 setStatusBarColor），通过这个方法我们就可以轻松实现沉浸式。也就是说，从Android5.0开始，系统才真正的支持沉浸式。
+
+Android 6.0（API 23）以上版本：其实Android6.0以上的实现方式和Android 5.0 +是一样，为什么要将它归为一个单独重要的阶段呢？是因为从Android 6.0（API 23）开始，我们可以改状态栏的绘制模式，可以显示白色或浅黑色的内容和图标（除了魅族手机，魅族自家有做源码更改，6.0以下就能实现）
+
+## 3.2、解决方案
+ 可参照 <https://juejin.im/post/5989ded56fb9a03c3b6c8bde> 或者
+ <https://www.jianshu.com/p/47f34bee13a9>
     
     
   
