@@ -16,7 +16,9 @@
       dimens使用，res/values的名称不同
       Strings使用，res/values的名称不同
     以上并不是最好的方案，各有优缺点，今日头条的方案网上都说好 <https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA>
+    
     网上许多代码都是集成字头条的，也要鸿神的方案 <https://blog.csdn.net/lmj623565791/article/details/45460089>
+    
   ### 1.2.2 图片适配
     1、 LOGO 图标
       建议按官方标准准备好各个图标；
@@ -47,6 +49,13 @@
   <https://www.cnblogs.com/JLZT1223/p/8108783.html>
   
   这个网址更牛b<https://www.jianshu.com/p/a8fd3d1fa0a3>
+  
+  ## 2.2、解决方案
+    一种解决方案是用google提供的EasyPermissions框架,参考如下地址
+    <https://segmentfault.com/a/1190000012247350>
+    
+    
+    
   
   
    
