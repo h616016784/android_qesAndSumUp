@@ -45,15 +45,22 @@
 
 危险权限涵盖应用需要涉及用户隐私信息的数据或资源，或者可能对用户存储的数据或其他应用的操作产生影响的区域。例如读取用户联系人，在6.0以上系统中，需要在运行时明确向用户申请权限。
 
-  ## 2.1、关于android6.0的权限一下博客（很全了） 
+  ## 2.1、关于android6.0、7.0/8.0的权限以下博客（很全了） 
   <https://www.cnblogs.com/JLZT1223/p/8108783.html>
   
   这个网址更牛b<https://www.jianshu.com/p/a8fd3d1fa0a3>
   
+
   ## 2.2、解决方案
    一种解决方案是用google提供的EasyPermissions框架,参考如下地址
    <https://segmentfault.com/a/1190000012247350>
    如果特定机型权限不能找到要try一下进行相应处理
+   
+     ### 2.2.1、关于权限遇到的问题
+      跳转安装界面崩溃,参照以下方案
+   <https://blog.csdn.net/sinat_14849739/article/details/65758033>或者
+   <https://www.cnblogs.com/vijozsoft/p/9304096.html>、<http://yifeng.studio/2017/05/03/android-7-0-compat-fileprovider/>
+   <https://juejin.im/post/5974ca356fb9a06bba4746bc>
     
     
   
