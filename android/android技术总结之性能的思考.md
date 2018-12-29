@@ -12,7 +12,7 @@
 # 2、原理
  ## 2.1、 流畅
   ### 卡顿的场景有很多，按场景可以分为4类：UI 绘制、应用启动、页面跳转、事件响应，如图：
-  ![卡顿场景]（ https://github.com/h616016784/android_qesAndSumUp/raw/master/pic/clipboard.png ）
+  ![卡顿场景]( https://github.com/h616016784/android_qesAndSumUp/raw/master/pic/clipboard.png )
   
   这4种卡顿场景的根本原因可以分为两大类：
 
