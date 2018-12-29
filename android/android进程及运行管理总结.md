@@ -53,6 +53,6 @@ service，service，这个和网络编程中的监听socket的工作很像嘛！
  
  activity的启动过程可以参考<https://blog.csdn.net/Luoshengyang/article/details/6685853>
  ## 2.1、四种启动模式
- 基础知识可参考<https://blog.csdn.net/carson_ho/article/details/54669547>
-    <https://www.jianshu.com/p/b60d8097e519>
+ 基础知识可参考<https://blog.csdn.net/carson_ho/article/details/54669547> 、<https://www.jianshu.com/p/b60d8097e519>
+ 
     尤其是<https://www.jianshu.com/p/b3a95747ee91>
