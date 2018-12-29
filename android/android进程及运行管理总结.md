@@ -52,4 +52,7 @@ service，service，这个和网络编程中的监听socket的工作很像嘛！
  无论是通过点击应用程序图标来启动Activity，还是通过Activity内部调用startActivity接口来启动新的Activity，都要借助于应用程序框架层的ActivityManagerService服务进程。Service也是由ActivityManagerService进程来启动的。在Android应用程序框架层中，ActivityManagerService是一个非常重要的接口，它不但负责启动Activity和Service，还负责管理Activity和Service。
  
  activity的启动过程可以参考<https://blog.csdn.net/Luoshengyang/article/details/6685853>
- 
+ ## 2.1、四种启动模式
+ 基础知识可参考<https://blog.csdn.net/carson_ho/article/details/54669547>
+    <https://www.jianshu.com/p/b60d8097e519>
+    尤其是<https://www.jianshu.com/p/b3a95747ee91>
