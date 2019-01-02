@@ -81,5 +81,7 @@ singleInstance：这种模式启动的Activity独自占用一个Task任务栈，
 
 网上有6种方法，可参考 <https://blog.csdn.net/u011386173/article/details/79095757> ，比较推荐用ActivityLifecycleCallbacks这种方法来实现。
  
+### 2.3、第三方app或者推送 打开app
+
 
  
