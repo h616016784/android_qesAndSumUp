@@ -60,8 +60,11 @@ service，service，这个和网络编程中的监听socket的工作很像嘛！
 本文假定大家对于Activity的Task栈已经有初步了解，首先，看一下Activity常见的四种启动模式及大众理解，这也是面试时最长问的：
 
 standard：标准启动模式（默认启动模式），每次都会启动一个新的activity实例。
+
 singleTop：单独使用使用这种模式时，如果Activity实例位于当前任务栈顶，就重用栈顶实例，而不新建，并回调该实例onNewIntent()方法，否则走新建流程。
+
 singleTask：这种模式启动的Activity只会存在相应的Activity的taskAffinit任务栈中，同一时刻系统中只会存在一个实例，已存在的实例被再次启动时，会重新唤起该实例，并清理当前Task任务栈该实例之上的所有Activity，同时回调onNewIntent()方法。
+
 singleInstance：这种模式启动的Activity独自占用一个Task任务栈，同一时刻系统中只会存在一个实例，已存在的实例被再次启动时，只会唤起原实例，并回调onNewIntent()方法。
 
 需要说明的是：上面的场景仅仅适用于Activity启动Activity，并且采用的都是默认Intent，没有额外添加任何Flag，否则表现就可能跟上面的完全不一致，尤其要注意的是FLAG_ACTIVITY_NEW_TASK的使用。
