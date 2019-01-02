@@ -69,3 +69,17 @@ singleInstance：这种模式启动的Activity独自占用一个Task任务栈，
 
 需要说明的是：上面的场景仅仅适用于Activity启动Activity，并且采用的都是默认Intent，没有额外添加任何Flag，否则表现就可能跟上面的完全不一致，尤其要注意的是FLAG_ACTIVITY_NEW_TASK的使用。
 
+关于taskAffinit的详情可参考<https://juejin.im/post/5aef0d215188253dc612991b> 的3.2条目。
+
+## 2.2、app进程
+### 2.1、app是否正在运行
+主要是通过ActivityManager和PackageManager 提供的api来进行判断。
+
+参考<https://www.cnblogs.com/zyw-205520/p/4746056.html>
+
+### 2.2、app的前后台状态
+
+网上有6种方法，可参考 <https://blog.csdn.net/u011386173/article/details/79095757> ，比较推荐用ActivityLifecycleCallbacks这种方法来实现。
+ 
+
+ 
