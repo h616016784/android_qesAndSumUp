@@ -75,15 +75,18 @@ singleInstance：这种模式启动的Activity独自占用一个Task任务栈，
 
 ## 2.2、app进程
 ### 2.1、app是否正在运行
-主要是通过ActivityManager和PackageManager 提供的api来进行判断。
+主要是通过ActivityManager和PackageManager 提供的api来进行判断。其中getrunning方法在6.0之前能用。
 
-参考<https://www.cnblogs.com/zyw-205520/p/4746056.html>
+参考<https://blog.csdn.net/chaoyu168/article/details/78988381>
 
 ### 2.2、app的前后台状态
 
 网上有6种方法，可参考 <https://blog.csdn.net/u011386173/article/details/79095757> ，比较推荐用ActivityLifecycleCallbacks这种方法来实现。
  
 ### 2.3、第三方app或者推送 打开app
+
+ 普通推送：当收到消息点击后跳转到app中的某个界面，分为app是否运行以及是否在前后台的情况
+ 聊天推送：当收到聊天信息后跳转到聊天界面，也分为app是否运行以及是否在前后台的情况，并且聊天界面是否topactivity。
 
 
  
