@@ -69,6 +69,8 @@ singleInstance：这种模式启动的Activity独自占用一个Task任务栈，
 
 需要说明的是：上面的场景仅仅适用于Activity启动Activity，并且采用的都是默认Intent，没有额外添加任何Flag，否则表现就可能跟上面的完全不一致，尤其要注意的是FLAG_ACTIVITY_NEW_TASK的使用。
 
+在非activity启动activity的时候要加FLAG_ACTIVITY_NEW_TASK（Activity对象包含任务栈信息，可以直接在任务栈中启动新的Activity，其他Context对象则不行，不加FLAG_ACTIVITY_NEW_TASK，会直接导致crash。）
+
 关于taskAffinit的详情可参考<https://juejin.im/post/5aef0d215188253dc612991b> 的3.2条目。
 
 ## 2.2、app进程
