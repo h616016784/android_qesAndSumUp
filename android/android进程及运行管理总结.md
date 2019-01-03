@@ -88,5 +88,23 @@ singleInstance：这种模式启动的Activity独自占用一个Task任务栈，
  普通推送：当收到消息点击后跳转到app中的某个界面，分为app是否运行以及是否在前后台的情况
  聊天推送：当收到聊天信息后跳转到聊天界面，也分为app是否运行以及是否在前后台的情况，并且聊天界面是否topactivity。
 
+## 2.3、activity和window和view的关系
+ 这个问题一直忘记细节，在这里记录一下
+ activity的启动：
+ 从startActivity开始，它会调用到Instrumentation，然后Instrumentation通过Binder向AMS(ActivityManagerService)发请求，通过PIC启动Activity。而这个AIDL操作的方法定义在ApplicationThread中（里面包括了Activity所有的生命周期方法的调用）。然后通过Handle回到主线程启动activity。
+ 
+ 1、从ActivityClientRecord中获取待启动的Activity组件信息
+2、通过Instrumentation的newActivity方法使用类加载器创建Activity对象
+3、通过LoadedApk的mackApplication方法来尝试创建Application对象（如果Application已经创建，则不会重复创建）
+4、创建ContextImpl对象，并通过Activity的attach方法来完成一些重要数据的初始化（包括让Activity跟Window关联）
+5、调用Activity的onCreate方法
+
+Activity其他生命周期的调用都是通过Binder向AMS发请求，然后执行的PIC操作，最后从ApplicationThread对生命周期调用。
+
+详细参考<https://www.jianshu.com/p/5297e307a688>
+
+理解也可以参考<https://blog.csdn.net/huachao1001/article/details/51866287>
+
+
 
  
