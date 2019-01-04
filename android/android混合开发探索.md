@@ -40,6 +40,11 @@ android混合开发
   - onReceivedError();加载页面的服务器出现错误时（如404）调用。
   - onReceivedSslError();webView默认是不处理https请求的，页面显示空白。
  ### 2.3.4、WebChromeClient类的常见用法（辅助 WebView 处理 Javascript 的对话框,网站图标,网站标题等等）：
- 
+  - onProgressChanged(); 获得网页的加载进度并显示
+  - onReceivedTitle(); 获取Web页中的标题
+  - onJsAlert(); 支持javascript的警告框
+  - onJsAlert（）;支持javascript的警告框
+  - onJsConfirm（）;支持javascript的确认框
+  - onJsPrompt（）;支持javascript输入框
  ### 2.3.5 遇到的问题
  -webview加载url跳转到系统浏览器。 重定向问题参考<https://juejin.im/entry/5977598d51882548c0045bde>
