@@ -7,7 +7,7 @@ android混合开发
 但随着Android 5.0+的普及以及iOS 9.0+的普及，性能缺陷和兼容性问题都在下降，也就是说如果哪一天Android最低支持版本从5.0开始，iOS最低支持版本从9.0开始了，那么混合开发App的缺点就明显会下降了，而这一天将在2017年末至2018年初到来。
 
 混合开发由简单到繁。
-
+详情可参考<https://www.jianshu.com/p/d2d4f652029d>
 # 1、基础的webview开发
  ## 2.1、webview简介
  WebView是一个基于webkit引擎、展现web页面的控件。
@@ -16,3 +16,30 @@ android混合开发
   - 在 Android 客户端上加载h5页面
   - 在本地 与 h5页面实现交互 & 调用
   - 其他：对 url 请求、页面加载、渲染、对话框 进行额外处理。
+## 2.3、具体使用
+ Webview的使用主要包括：Webview类 及其 工具类（WebSettings类、WebViewClient类、WebChromeClient类）
+ 详情参照<https://www.jianshu.com/p/3c94ae673e2a>
+ 
+ ### 2.3.1、webview的常用的方法
+  - 加载url
+  - WebView的状态（暂时没用到）
+  - 关于前进 / 后退网页
+  - 清除缓存数据
+ ### 2.3.2、WebSettings类的常用的方法
+  - 设置WebView缓存
+   当加载 html 页面时，WebView会在/data/data/包名目录下生成 database 与 cache 两个文件夹。
+   请求的 URL记录保存在 WebViewCache.db，而 URL的内容是保存在 WebViewCache 文件夹下
+   是否启用缓存
+   结合使用（离线加载）
+  注意： 每个 Application 只调用一次 WebSettings.setAppCachePath()，WebSettings.setAppCacheMaxSize()
+ ### 2.3.3、WebViewClient类（处理各种通知 & 请求事件）的常见方法
+  - shouldOverrideUrlLoading();打开网页时不调用系统浏览器， 而是在本WebView中显示；在网页上的所有加载都经过这个方法。
+  - onPageStarted();开始载入页面调用的，我们可以设定一个loading的页面，告诉用户程序在等待网络响应
+  - onPageFinished();在页面加载结束时调用。我们可以关闭loading 条，切换程序动作。
+  - onLoadResource();在加载页面资源时会调用，每一个资源（比如图片）的加载都会调用一次。
+  - onReceivedError();加载页面的服务器出现错误时（如404）调用。
+  - onReceivedSslError();webView默认是不处理https请求的，页面显示空白。
+ ### 2.3.4、WebChromeClient类的常见用法（辅助 WebView 处理 Javascript 的对话框,网站图标,网站标题等等）：
+ 
+ ### 2.3.5 遇到的问题
+ -webview加载url跳转到系统浏览器。 重定向问题参考<https://juejin.im/entry/5977598d51882548c0045bde>
