@@ -48,3 +48,18 @@ android混合开发
   - onJsPrompt（）;支持javascript输入框
  ### 2.3.5 遇到的问题
  -webview加载url跳转到系统浏览器。 重定向问题参考<https://juejin.im/entry/5977598d51882548c0045bde>
+ 
+ # 2、webview与js的交互
+ 具体可参照 <https://www.jianshu.com/p/345f4d8a5cfa>
+ ## 2.1、对于Android调用JS代码的方法有2种：
+
+ ### 2.1.1、通过WebView的loadUrl（）
+  // webview只是载体，内容的渲染需要使用webviewChromClient类去实现
+  特别注意：JS代码调用一定要在 onPageFinished（） 回调之后才能调用，否则不会调用
+ ### 2.1.2、通过WebView的evaluateJavascript（）
+  特点：
+  - 该方法比第一种方法效率更高、使用更简洁。
+  - 因为该方法的执行不会使页面刷新，而第一种方法（loadUrl ）的执行则会。
+  - Android 4.4 后才可使用
+  
+  建议两种方法混合使用
