@@ -63,3 +63,16 @@ android混合开发
   - Android 4.4 后才可使用
   
   建议两种方法混合使用
+  ## 2.2 JS通过WebView调用 Android 代码
+  对于JS调用Android代码的方法有3种：
+
+ ### 2.2.1、通过WebView的addJavascriptInterface（）进行对象映射
+ - 优点：使用简单仅将Android对象和JS对象映射即可
+ - 缺点：存在严重的漏洞问题 具体参考<https://www.jianshu.com/p/3a345d27cd42>
+通过 WebViewClient 的shouldOverrideUrlLoading ()方法回调拦截 url
+通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt（）方法回调拦截JS对话框alert()、confirm()、prompt（） 消息
+
+
+  
+  
+  
