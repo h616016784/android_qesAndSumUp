@@ -7,7 +7,7 @@ android混合开发
 但随着Android 5.0+的普及以及iOS 9.0+的普及，性能缺陷和兼容性问题都在下降，也就是说如果哪一天Android最低支持版本从5.0开始，iOS最低支持版本从9.0开始了，那么混合开发App的缺点就明显会下降了，而这一天将在2017年末至2018年初到来。
 
 混合开发由简单到繁。
-详情可参考<https://www.jianshu.com/p/d2d4f652029d>
+详情可参考<https://www.jianshu.com/p/d2d4f652029d> 和 <https://bxbxbai.github.io/2015/08/16/talk-about-bybird-app/>
 # 1、基础的webview开发
  ## 2.1、webview简介
  WebView是一个基于webkit引擎、展现web页面的控件。
@@ -87,8 +87,18 @@ android混合开发
   常用的拦截是：拦截 JS的输入框（即prompt（）方法）
   因为只有prompt（）可以返回任意类型的值，操作最全面方便、更加灵活；而alert（）对话框没有返回值；confirm（）对话框只能返回两种状态（确定 / 取消）两个值
 
-
-
+# 3、webview的使用漏洞
+ WebView 使用过程中存在许多漏洞，容易造成用户数据泄露等等危险，而很多人往往会忽视这个问题
+ WebView中，主要漏洞有3类：任意代码执行漏洞、密码明文存储漏洞、域控制不严格漏洞
+ 
+ 具体可参考<https://www.jianshu.com/p/3a345d27cd42>
   
+# 4、webview缓存机制
+通过 H5缓存机制 + 资源预加载 + 资源拦截的方式 构建了一套WebView缓存机制，从而解决Android WebView的性能问题，最终提高用户使用体验
+
+具体参考 <https://www.jianshu.com/p/5e7075f4875f>
+
+# 5、混合开发框架简介
+ 参考 <https://kangzubin.com/2018-mobile-end-cross-platform-dev/>
   
   
