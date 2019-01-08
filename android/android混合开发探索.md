@@ -69,8 +69,24 @@ android混合开发
  ### 2.2.1、通过WebView的addJavascriptInterface（）进行对象映射
  - 优点：使用简单仅将Android对象和JS对象映射即可
  - 缺点：存在严重的漏洞问题 具体参考<https://www.jianshu.com/p/3a345d27cd42>
-通过 WebViewClient 的shouldOverrideUrlLoading ()方法回调拦截 url
-通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt（）方法回调拦截JS对话框alert()、confirm()、prompt（） 消息
+ 
+ ### 2.2.2、通过 WebViewClient 的shouldOverrideUrlLoading ()方法回调拦截 url
+ 具体原理：
+ - Android通过 WebViewClient 的回调方法shouldOverrideUrlLoading ()拦截 url
+ - 解析该 url 的协议
+ - 如果检测到是预先约定好的协议，就调用相应方法
+ 
+ 特点
+ - 优点：不存在方式1的漏洞；
+ - 缺点：JS获取Android方法的返回值复杂。
+ ### 2.2.3、通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt（）方法回调拦截JS对话框alert()、confirm()、prompt（）消息
+  原理：Android通过 WebChromeClient 的onJsAlert()、onJsConfirm()、onJsPrompt（）方法回调分别拦截JS对话框
+（即上述三个方法），得到他们的消息内容，然后解析即可。
+
+ 用拦截 JS的输入框（即prompt（）方法）说明 ：
+  常用的拦截是：拦截 JS的输入框（即prompt（）方法）
+  因为只有prompt（）可以返回任意类型的值，操作最全面方便、更加灵活；而alert（）对话框没有返回值；confirm（）对话框只能返回两种状态（确定 / 取消）两个值
+
 
 
   
