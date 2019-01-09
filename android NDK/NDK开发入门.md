@@ -59,3 +59,74 @@ Google 明确声明该 API 是稳定的，在后续所有版本中都稳定支�
 开发 Java 组件时，使用 native 关键字指示以原生代码形式实现的方法。 例如，以下函数声明向编译器告知实现在原生库中：
 
 public native int add(int  x, int  y);
+
+  - 原生共享库：NDK 从原生源代码构建这些库或 .so 文件。
+  注意：如果两个库使用相同的签名实现各自的方法，就会发生关联错误。 在 C 语言中，“签名”只表示方法名称。在 C++ 中，“签名”不仅表示方法名称，还表示其参数名称和类型。
+  
+  - 原生静态库：NDK 也可构建静态库或 .a 文件，您可以关联到其他库。
+  
+  - Java 原生接口 (JNI)：JNI 是 Java 和 C++ 组件用以互相沟通的接口。 如需了解相关信息，请查阅 Java 原生接口规范。
+  
+  - 应用二进制界面 (ABI)：ABI 可以非常精确地定义应用的机器代码在运行时如何与系统交互。 NDK 根据这些定义构建 .so 文件。 不同的 ABI 对应不同的架构：NDK 包含对 ARMEABI（默认）、MIPS 和 x86 的 ABI 支持。
+  如需了解详细信息，请参阅 ABI 管理<https://developer.android.com/ndk/guides/abis?hl=zh-cn>
+  
+  - 清单：如果您要编写没有 Java 组件的应用，必须在清单中声明 NativeActivity 类。原生 Activity 和应用在“使用 native_activity.h 接口”下提供了如何执行此操作的详细信息。
+  
+下面两个项目仅在使用 ndk-build 脚本构建时以及使用 ndk-gdb 脚本调试时才需要。
+
+  - Android.mk：必须在 jni 文件夹内创建 Android.mk 配置文件。 ndk-build 脚本将查看此文件，其中定义了模块及其名称、要编译的源文件、版本标志以及要链接的库。
+  - Application.mk：此文件枚举并描述您的应用需要的模块。 这些信息包括：用于针对特定平台进行编译的 ABI;工具链;要包含的标准库（静态和动态 STLport 或默认系统）。
+  
+  那 CMake 又是什么呢。脱离 Android 开发来看，c/c++ 的编译文件在不同平台是不一样的。Unix 下会使用 makefile 文件编译，Windows 下会使用 project 文件编译。而 CMake 则是一个跨平台的编译工具，它并不会直接编译出对象，而是根据自定义的语言规则（CMakeLists.txt）生成 对应 makefile 或 project 文件，然后再调用底层的编译。
+  在Android Studio 2.2 之后，工具中增加了 CMake 的支持，你可以这么认为，在 Android Studio 2.2 之后你有2种选择来编译你写的 c/c++ 代码。一个是 ndk-build + Android.mk + Application.mk 组合，另一个是 CMake + CMakeLists.txt 组合。这2个组合与Android代码和c/c++代码无关，只是不同的构建脚本和构建命令。本篇文章主要会描述后者的组合。（也是Android现在主推的）
+
+ ### 2.1.2 基本流程
+ - 设计应用，确定要在 Java 中实现的部分，以及要以原生代码形式实现的部分。
+ 注：虽然可以完全避免 Java，但您可能发现，Android Java 框架对于包括控制显示和 UI 在内的任务很有用。
+ - 像创建任何其他 Android 项目一样创建一个 Android 应用项目。
+如果要编写纯原生应用，请在 AndroidManifest.xml 中声明 NativeActivity 类。 如需了解详细信息，请参阅原生 Activity 和应用。
+ - 在“JNI”目录中创建一个描述原生库的 Android.mk 文件，包括名称、标志、链接库和要编译的源文件。
+ - 或者，也可以创建一个配置目标 ABI、 工具链、发行/调试模式和 STL 的 Application.mk 文件。对于其中任何您未指明的项目，将分别使用以下默认值：
+ABI：armeabi
+工具链：GCC 4.8
+模式：发行
+STL：系统
+ - 将原生来源置于项目的 jni 目录下。
+ - 使用 ndk-build 编译原生（.so、.a）库。
+ - 构建 Java 组件，生成可执行 .dex 文件。
+ - 将所有内容封装到一个 APK 文件中，包含 .so、.dex 以及应用运行所需的其他文件。
+ 
+ android还提供了帮助程序类 NativeActivity，可用于写入完全原生的 Activity。
+ 详细可参照<https://developer.android.com/ndk/guides/concepts?hl=zh-cn>
+ 
+ ## 2.2 设置NDK
+ ### 2.2.1、安装NDK
+  - 下载android studio及ndk <https://developer.android.com/ndk/downloads/?hl=zh-cn>
+  - 将您的 PATH 环境变量更新为包含 NDK 的目录的位置。
+  (如果用android studio直接下载就没有上面操作，都是默认生成的)
+  
+
+  
+ ## 2.3、ABI 是什么以及不同 CPU 指令集支持哪些 ABI
+ ABI（Application binary interface）应用程序二进制接口。不同的CPU 与指令集的每种组合都有定义的 ABI (应用程序二进制接口)，一段程序只有遵循这个接口规范才能在该 CPU 上运行，所以同样的程序代码为了兼容多个不同的CPU，需要为不同的 ABI 构建不同的库文件。当然对于CPU来说，不同的架构并不意味着一定互不兼容。
+
+ - armeabi设备只兼容armeabi；
+ - armeabi-v7a设备兼容armeabi-v7a、armeabi；
+ - arm64-v8a设备兼容arm64-v8a、armeabi-v7a、armeabi；
+ - X86设备兼容X86、armeabi；
+ - X86_64设备兼容X86_64、X86、armeabi；
+ - mips64设备兼容mips64、mips；
+ - mips只兼容mips；
+
+具体的兼容问题可以参见这篇文章。Android SO文件的兼容和适配
+当我们开发 Android 应用的时候，由于 Java 代码运行在虚拟机上，所以我们从来没有关心过这方面的问题。但是当我们开发或者使用原生代码时就需要了解不同 ABI 以及为自己的程序选择接入不同 ABI 的库。（库越多，包越大，所以要有选择）
+下面我们来看下一共有哪些 ABI 以及对应的指令集
+
+
+ ## 2.4、NDK的构建和调试
+ 
+   这里参考<https://www.jianshu.com/p/b4a4cd12d528>来使用 CMake 来构建ndk项目
+   
+   也可以参考android官网 <https://developer.android.com/studio/projects/add-native-code?hl=zh-cn>
+  
+
