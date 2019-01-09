@@ -2,6 +2,9 @@
 NDK入门
 ========
 自已一直很想学习关于NDK开发方面的知识，现在终于有时间了，自己学习的同时也记录下笔记以待以后查看方便。
+主要参考<http://wiki.jikexueyuan.com/project/jni-ndk-developer-guide/envirment.html>
+<https://developer.android.com/ndk/guides/concepts?hl=zh-cn>
+<https://juejin.im/post/595da4e25188250d8b65ddbf>
 
 入门知识我首先参照官网的顺序学习的 参考<https://developer.android.com/ndk/guides/?hl=zh-cn>
 # 1、简介
@@ -40,3 +43,19 @@ Google 明确声明该 API 是稳定的，在后续所有版本中都稳定支�
  - 如何编译 NDK 项目
  - ABI 是什么以及不同 CPU 指令集支持哪些 ABI
  - 如何使用您自己及其他预建的库
+ 
+ ## 2.1、NDK的基本概念
+  Android NDK 是一组允许您将 C 或 C++（“原生代码”）嵌入到 Android 应用中的工具。 能够在 Android 应用中使用原生代码对于想执行以下一项或多项操作的开发者特别有用：
+
+  - 在平台之间移植其应用。
+  - 重复使用现有库，或者提供其自己的库供重复使用。
+  - 在某些情况下提高性能，特别是像游戏这种计算密集型应用。
+  
+ ### 2.1.1 主要组件
+  - ndk-build：ndk-build 脚本用于在 NDK 中心启动构建脚本。这些脚本：自动探测您的开发系统和应用项目文件以确定要构建的内容；生成二进制文件；将二进制文件复制到应用的项目路径。
+  如需了解详细信息，请参阅 <https://developer.android.com/ndk/guides/ndk-build?hl=zh-cn>
+  
+  - Java：Android 构建过程从 Java 来源生成 .dex (Dalvik EXecutable) 文件，这些文件是 Android OS 在 Dalvik 虚拟机（“DVM”）中运行的文件。 即使您的应用根本未包含任何 Java 源代码，构建过程仍会生成原生组件在其中运行的 .dex 可执行文件。
+开发 Java 组件时，使用 native 关键字指示以原生代码形式实现的方法。 例如，以下函数声明向编译器告知实现在原生库中：
+
+public native int add(int  x, int  y);
