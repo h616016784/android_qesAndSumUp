@@ -2,8 +2,8 @@
 NDK入门
 ========
 自已一直很想学习关于NDK开发方面的知识，现在终于有时间了，自己学习的同时也记录下笔记以待以后查看方便。
-主要参考<http://wiki.jikexueyuan.com/project/jni-ndk-developer-guide/envirment.html>
-<https://developer.android.com/ndk/guides/concepts?hl=zh-cn>
+主要参考<http://wiki.jikexueyuan.com/project/jni-ndk-developer-guide/envirment.html> 
+<https://developer.android.com/ndk/guides/concepts?hl=zh-cn>  
 <https://juejin.im/post/595da4e25188250d8b65ddbf>
 
 入门知识我首先参照官网的顺序学习的 参考<https://developer.android.com/ndk/guides/?hl=zh-cn>
@@ -128,7 +128,17 @@ STL：系统
   - 从官网上下载最新的NDK工具 <https://developer.android.com/ndk/downloads/?hl=zh-cn>
   - 将ndk-build所在目录加入PATH环境变量，以便后续调试。
   - 就在Windows 命令窗口 输入 ndk-build，得到如下图，说明你配置成功了。
+  ![ndk配置成功]( https://github.com/h616016784/android_qesAndSumUp/raw/master/pic/ndk_config.png )
   
+  - 配置android sutdio和ndk的路径。
+  - 在项目中添加jni文件，并将Android.mk、Application.mk和c++原文件加入其中，根据参考文档向3个文件加入内容。
+  - 进入Android Studio命令行页面，如果没有这个选项，则你从 View菜单栏里 Tool Windows => Terminal 调出该页面。
+  - 输入如下命令：
+      cd app/src/main   // 进入该路径
+      执行 ndk-build 命令
+      
+  --华丽的分割线
+  根据以上内容就可以生成c文件，一下在进行详细配置练习。
   
  ### 2.4.2、
    这里参考<https://www.jianshu.com/p/b4a4cd12d528>来使用 CMake 来构建ndk项目
