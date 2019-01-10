@@ -131,4 +131,16 @@ STL：系统
    
    不过我自己学习的ndk-build配置的，更接近底层配置的，参考<https://developer.android.com/ndk/guides/build?hl=zh-cn>
   
+  参考<https://blog.csdn.net/carson_ho/article/details/73250163>，构建.so文件的步骤如下：
+ - 配置 Android NDK环境
+ - 关联 Andorid Studio项目 与 NDK
+ - 创建本地代码文件（即需要在 Android项目中调用的本地代码文件）
+ - 创建 Android.mk文件 & Application.mk文件
+ - 编译上述文件，生成.so库文件，并放入到工程文件中
+ - 在 Andoird Studio项目中使用 NDK实现 JNI 功能
+ 
+ 也可参考<http://web.guohuiwang.com/technical-notes/androidndk1>    
+ <https://www.cnblogs.com/xiaoxiaoqingyi/p/6524165.html>
+ 来学习用ndk创建项目
 
+  
