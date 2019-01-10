@@ -122,9 +122,15 @@ STL：系统
 当我们开发 Android 应用的时候，由于 Java 代码运行在虚拟机上，所以我们从来没有关心过这方面的问题。但是当我们开发或者使用原生代码时就需要了解不同 ABI 以及为自己的程序选择接入不同 ABI 的库。（库越多，包越大，所以要有选择）
 下面我们来看下一共有哪些 ABI 以及对应的指令集
 
-
  ## 2.4、NDK的构建和调试
- 
+  ### 2.4.1、首先用原生的NDK工具来构建C++文件，和android项目关系不大。
+  这里参考的是<http://web.guohuiwang.com/technical-notes/androidndk1>  和<https://www.cnblogs.com/xiaoxiaoqingyi/p/6524165.html>
+  - 从官网上下载最新的NDK工具 <https://developer.android.com/ndk/downloads/?hl=zh-cn>
+  - 将ndk-build所在目录加入PATH环境变量，以便后续调试。
+  - 就在Windows 命令窗口 输入 ndk-build，得到如下图，说明你配置成功了。
+  
+  
+ ### 2.4.2、
    这里参考<https://www.jianshu.com/p/b4a4cd12d528>来使用 CMake 来构建ndk项目
    
    也可以参考android官网 <https://developer.android.com/studio/projects/add-native-code?hl=zh-cn>
