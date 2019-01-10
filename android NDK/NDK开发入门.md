@@ -128,5 +128,7 @@ STL：系统
    这里参考<https://www.jianshu.com/p/b4a4cd12d528>来使用 CMake 来构建ndk项目
    
    也可以参考android官网 <https://developer.android.com/studio/projects/add-native-code?hl=zh-cn>
+   
+   不过我自己学习的ndk-build配置的，更接近底层配置的，参考<https://developer.android.com/ndk/guides/build?hl=zh-cn>
   
 
