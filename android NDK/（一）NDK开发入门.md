@@ -35,7 +35,7 @@ NDK 提供了一份稳定、功能有限的 API 头文件声明
 
 Google 明确声明该 API 是稳定的，在后续所有版本中都稳定支持当前发布的 API。从该版本的 NDK 中看出，这些 API 支持的功能非常有限，包含有：C 标准库（libc）、标准数学库（libm）、压缩库（libz）、Log 库（liblog）。
 
-# 2、基本知识
+# 2、基本入门
 官网主要提供建立和运行 NDK 所需的信息。
 官方文档分别从以下几个方面介绍了 NDK
 
@@ -138,9 +138,27 @@ STL：系统
       执行 ndk-build 命令
       
   --华丽的分割线
-  根据以上内容就可以生成c文件，一下在进行详细配置练习。
+  根据以上内容就可以生成c文件，一下在进行详细配置练习：
   
- ### 2.4.2、
+  - c++文件可以移动到其他目录下，不必一定在jni目录下，只要在android.mk文件中配置好
+  - android.mk和Application.mk也可以不必放在jni目录下
+  - 自定义makefiles的名称
+  - makefiles可以包含另一个makefile
+  
+  - 最佳实践，通过上述配置，可完成复杂项目的功能分解，使项目调理更加清晰。比如我们想让c++文件按函数功能分为不同的包等
+  
+  ### 2.4.2、调试
+   - 关于 LOCAL_PATH and CLEAR_VARS，要特别注意
+   - 如何debug .mk文件的makefiles：
+      在makefiles写入一下几种打印方式 $(error error message)、$(warning warning message)、$(info information message)
+      或者在ndk-build的时候加V=1选项，如ndk-build NDK_APPLICATION_MK=./jnimakefiles/Application.mk V=1。
+    
+  ### 2.4.3、构建多ABIS结构的项目
+  这个放在后面特别说是因为他在适配方面很重要。
+  
+  ### 2.4.4、Standalone toolchain的使用（有时间再研究）
+  
+ ### 2.5、
    这里参考<https://www.jianshu.com/p/b4a4cd12d528>来使用 CMake 来构建ndk项目
    
    也可以参考android官网 <https://developer.android.com/studio/projects/add-native-code?hl=zh-cn>
