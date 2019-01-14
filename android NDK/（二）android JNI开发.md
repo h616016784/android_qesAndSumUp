@@ -2,7 +2,8 @@
 JNI开发
 =====
 # 1、运行一个简单的JNIdemo
- 主要参照<http://www.jcodecraeer.com/a/anzhuokaifa/2017/0401/7769.html> 
+ 主要参照<http://www.jcodecraeer.com/a/anzhuokaifa/2017/0401/7769.html>  
+ <https://juejin.im/entry/5a9d4ad05188255569187646>
 网上的步骤有的会报：
 Flag android.useDeprecatedNdk is no longer supported and will be removed in the next version of Android Studio. Please switch to a supported build system. 这个错误，主要是android studio3.0以后useDeprecatedNdk废弃了，只能用ndk-build或者cmakelist，这里参考如下地址解决方案：
  <https://juejin.im/post/5a45f032518825390e34820a>
@@ -20,6 +21,9 @@ Flag android.useDeprecatedNdk is no longer supported and will be removed in the 
               path "src/main/jni/Android.mk"
           }
       } ```
+      
+  也可以指定.so的生成路径
+
       
  ## 1.3 新建java访问c层的接口类
  ``` java
@@ -58,3 +62,14 @@ Flag android.useDeprecatedNdk is no longer supported and will be removed in the 
   ```
 ## 1.7 运行Run
   调用jni的函数JniUtils.getJniString(),如果有输出则调用成功。
+  
+  其中生成的.so文件在app\build\intermediates\ndkbuild中查看，如果指定.so的路径则在相应路径上查看。
+  
+以上只是简单的demo，按照上面的步骤可以生成并运行.so动态库，以上只是在android studio上配置ndk-build来运行，已可以直接用java的命令来生成c++文件，并用命令行调用ndk-bulid来生成.so文件，再用android studio来引用，基本步骤如下：
+ - 编写声明了 native 方法的 Java 类
+ - 将 Java 源代码编译成 class 字节码文件
+ - 用 javah -jni 命令生成.h头文件（javah 是 jdk 自带的一个命令，-jni 参数表示将 class 中用native 声明的函数生成 JNI 规则的函数）
+ - 用本地代码实现.h头文件中的函数
+ - 将本地代码编译成动态库（Windows：\*.dll，linux/unix：\*.so，mac os x：\*.jnilib）
+ - 拷贝动态库至 本地库搜索目录下，并运行 Java 程序
+android studio2.2后又出了cmake来简化配置，很好用。
