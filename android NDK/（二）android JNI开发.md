@@ -21,9 +21,22 @@ Flag android.useDeprecatedNdk is no longer supported and will be removed in the 
               path "src/main/jni/Android.mk"
           }
       } ```
-      
-  也可以指定.so的生成路径
-
+  也可以指定输出ABI，在defaultConfig下面配置
+   ```gradle
+    ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+   ```
+   
+  也可以指定.so的生成路径,在android下，但是没有生效（不止为啥）
+   ```gradle
+    sourceSets {
+        main{
+            jni.srcDirs=[] //禁用as自动生成mk
+            jniLibs.srcDirs = ['libs'] //这里设置 so 生成的位置
+        }
+    }
+   ```
       
  ## 1.3 新建java访问c层的接口类
  ``` java
@@ -73,3 +86,10 @@ Flag android.useDeprecatedNdk is no longer supported and will be removed in the 
  - 将本地代码编译成动态库（Windows：\*.dll，linux/unix：\*.so，mac os x：\*.jnilib）
  - 拷贝动态库至 本地库搜索目录下，并运行 Java 程序
 android studio2.2后又出了cmake来简化配置，很好用。
+
+# 2、深入理解和学习JNI
+## 2.1、同时编译多文件和依赖的第三方库文件
+- 同时编译多文件
+ 参考<https://blog.csdn.net/educast/article/details/12843319> 
+ LOCAL_SRC_FILES :=a.cpp b.cpp
+ 
