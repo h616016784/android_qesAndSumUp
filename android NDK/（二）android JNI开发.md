@@ -90,6 +90,37 @@ android studio2.2后又出了cmake来简化配置，很好用。
 # 2、深入理解和学习JNI
 ## 2.1、同时编译多文件和依赖的第三方库文件
 - 同时编译多文件
- 参考<https://blog.csdn.net/educast/article/details/12843319> 
- LOCAL_SRC_FILES :=a.cpp b.cpp
+ 参考<https://blog.csdn.net/educast/article/details/12843319>  
  
+ 在Android.mk中 LOCAL_SRC_FILES :=a.cpp b.cpp
+ 
+- 引入第三方 so，.a 包(自己暂时没用到)
+ 重新编写 mk 文件(根据实际情况会有所修改)：
+ ```mk
+   LOCAL_PATH := $(call my-dir)
+  #引入第三方 so 
+  include $(CLEAR_VARS)
+  LOCAL_MODULE    := vvw
+  LOCAL_SRC_FILES := libvvw.so
+  LOCAL_EXPORT_C_INCLUDES := include
+  include $(PREBUILT_SHARED_LIBRARY)
+
+
+  include $(CLEAR_VARS)
+  LOCAL_MODULE    := jniutils
+  LOCAL_SRC_FILES := jniutils.cpp
+  LOCAL_LDLIBS :=-llog
+
+  #引入第三方编译模块
+  LOCAL_SHARED_LIBRARIES := \
+  vvw
+
+  include $(BUILD_SHARED_LIBRARY)
+ ```
+ 与前面相比，多了一个第三方模块的引入，如果导入的工程报错，可以试着 APP_ABI 为 x86。
+ 
+## 2.2、androidstudio引用第三方c++动态库
+参考<https://blog.csdn.net/xy_kok/article/details/72885943>
+
+交叉编译？？？
+先学习这个<https://juejin.im/post/5b631145e51d45162679f09e>
