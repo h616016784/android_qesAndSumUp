@@ -170,6 +170,37 @@ Log.d("Calculator", "11 + 12 =" + (mNativeCalculator.addition(11,12)));
 
 ```
 运行打印输出
+
+## 2.3、cmake的常用语法学习
+主要参考<https://juejin.im/post/5b9879976fb9a05d330aa206#heading-13>  
+可以参考中文文档<https://www.zybuluo.com/khan-lau/note/254724> 
+### 2.3.1、基本操作
+ - CMake 编译可执行文件
+ 在 cpp 的同一目录下创建 CMakeLists.txt 文件，内容如下：
+ ```cmake
+  # 指定 CMake 使用版本
+  cmake_minimum_required(VERSION 3.9)
+  # 工程名
+  project(HelloCMake)
+  # 编译可执行文件
+  add_executable(HelloCMake main.cpp )
+```
+其中，通过 cmake_minimum_required 方法指定 CMake 使用版本，通过 project 指定工程名。
+而 add_executable 就是指定最后编译的可执行文件名称和需要编译的 cpp 文件，如果工程很大，有多个 cpp 文件，那么都要把它们添加进来。
+
+ - CMake 编译静态库和动态库
+ ```cmake
+ cmake_minimum_required(VERSION 3.12)
+# 指定编译的库和文件，SHARED 编译动态库
+add_library(share_lib SHARED lib.cpp)
+# STATIC 编译静态库
+# add_library(share_lib STATIC lib.cpp)
+
+ ```
+ add_library 指定要编译的库的名称，以及动态库还是静态库，还有要编译的文件。
+ 
+ ## 2.3.2、CMake 基本语法
+  参考官网手册<https://www.zybuluo.com/khan-lau/note/254724>
 # 3、深入理解和学习JNI
 ## 3.1、同时编译多文件和依赖的第三方库文件
 - 同时编译多文件
