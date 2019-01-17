@@ -1,7 +1,7 @@
 
 JNI开发
 =====
-# 1、运行一个简单的JNIdemo
+# 1、运行一个简单的JNIdemo，用ndk-build
  主要参照<http://www.jcodecraeer.com/a/anzhuokaifa/2017/0401/7769.html>  
  <https://juejin.im/entry/5a9d4ad05188255569187646>
 网上的步骤有的会报：
@@ -86,9 +86,92 @@ Flag android.useDeprecatedNdk is no longer supported and will be removed in the 
  - 将本地代码编译成动态库（Windows：\*.dll，linux/unix：\*.so，mac os x：\*.jnilib）
  - 拷贝动态库至 本地库搜索目录下，并运行 Java 程序
 android studio2.2后又出了cmake来简化配置，很好用。
+# 2、运行一个JNIdemo，使用cmake
+主要参考<https://juejin.im/post/5a30faaf518825293b50501f> ，
+<https://developer.android.com/studio/projects/add-native-code?hl=zh-cn> 
+这种方法配置相对简单。
+当通过CMake来对应用程序增加C/C++的支持时，对于应用程序的开发者，只需要关注以下三个方面：
+ - C/C++源文件
+ - CMakeList.txt脚本
+ - 在模块级别的build.gradle中通过externalNativeBuild/cmake进行配置
+## 2.1、创建并运行支持c++库的项目
+### 2.1.1、基本步骤
+ - 在新建项目之前，我们需要通过SDK Manager安装一些必要的组件：NDK、CMake、LLDB
+ - 创建一个全新的工程，这里需要记得勾选include C++ Support选项
+ - 在最后一步选择C++的标准，Toolchain Default表示使用默认的CMake配置
+ - 与传统的项目相比：
+  该模块所对应的build.gradle需要在里面指定CMakeList.txt所在的路径，也就是下面externalNativeBuild对应的选项。
+  当新建工程时，它会生成一个native-lib.cpp的事例文件
+  app/目录下多了CMakeList.txt文件
+ - 运行程序
+ 
+ 注：我在创建工程时，遇到error build异常，是因为高版本的cmake（3.10.2）不能运行在android stdio（3.0）上，我删除掉了D:\ProgramFiles\Android\AppData\Local\Android\sdk\cmake这个路径上的一个高版本文件，运行就正常了。
+### 2.1.2、原理
+- 首先，在构建时，通过build.gradle中path所指定的路径，找到CMakeList.txt，解析其中的内容。
+- 按照脚本中的命令，将src/main/cpp/native-lib.cpp编译到共享的对象库中，并将其命名为libnative-lib.so，随后打包到APK中。
+- 当应用运行时，首先会执行MainActivity的static代码块的内容，使用System.loadLibrary()加载原生库。
+- 在onCreate()函数中，调用原生库的函数得到字符串并展示。
+## 2.2、在现有的项目中添加C/C++代码
+- 创建的时候，不勾选nclude C++ Support选项
+- 定义接口
+```java
+ public class NativeCalculator {
 
-# 2、深入理解和学习JNI
-## 2.1、同时编译多文件和依赖的第三方库文件
+    private static final String SELF_LIB_NAME = "calculator";
+
+    static {
+        System.loadLibrary(SELF_LIB_NAME);
+    }
+
+    public native int addition(int a, int b);
+
+    public native int subtraction(int a, int b);
+}
+
+```
+- 在模块根目录下的src/main/新建一个文件夹cpp，在其中新增一个calculator.cpp文件,文件内容如下：
+```
+#include <jni.h>
+```
+- 在模块根目录下新建一个CMakeLists.txt文件：
+```
+cmake_minimum_required(VERSION 3.4.1)
+
+add_library(calculator SHARED src/main/cpp/calculator.cpp)
+```
+- 我们需要让Gradle脚本确定CMakeLists.txt所在的位置，我们可以在CMakeLists.txt上点击右键，之后选择Link C++ Project with Gradle
+```
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
+```
+- 实现 C++ ,文件的全部代码如下：
+```
+#include <jni.h>
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_hhl_jnicmaketemp_NativeCalculator_addition(JNIEnv *env, jobject instance, jint a, jint b) {
+    return a + b;
+}
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_hhl_jnicmaketemp_NativeCalculator_subtraction(JNIEnv *env, jobject instance,  jint a, jint b) {
+    return a - b;
+}
+```
+- 调用本地代码
+```
+Log.d("Calculator", "11 + 12 =" + (mNativeCalculator.addition(11,12)));
+        Log.d("Calculator", "11 - 12 =" + (mNativeCalculator.subtraction(11,12)));
+
+```
+运行打印输出
+# 3、深入理解和学习JNI
+## 3.1、同时编译多文件和依赖的第三方库文件
 - 同时编译多文件
  参考<https://blog.csdn.net/educast/article/details/12843319>  
  
@@ -119,7 +202,7 @@ android studio2.2后又出了cmake来简化配置，很好用。
  ```
  与前面相比，多了一个第三方模块的引入，如果导入的工程报错，可以试着 APP_ABI 为 x86。
  
-## 2.2、androidstudio引用第三方c++动态库
+## 3.2、androidstudio引用第三方c++动态库
 参考<https://blog.csdn.net/xy_kok/article/details/72885943>
 
 交叉编译？？？
