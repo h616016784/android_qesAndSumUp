@@ -118,7 +118,8 @@ include $(BUILD_SHARED_LIBRARY)
 jni目录下有md5文件，md5文件内有md5.h md5.cpp文件，加密算法在md5.cpp的文件内。
 
 # 5、C语言回调java方法
-其中前提要理解java反射的原理
+其中前提要理解java反射的原理。
+其次要注意c代码中的GetMethodID方法，最后的方法签名根据传入的数据类型而不同。
 ## 5.1、调用java空方法
 java类中的空方法及调用空方法的本地方法 
 ```java
@@ -230,5 +231,57 @@ JNIEXPORT void JNICALL Java_com_hhl_jnirundemo_JniUtils_callbackPrintString
         env->CallVoidMethod(cObject,methodID,cString);//C代码调用Java中JNI类的printString
 }
 ```
+## 5.4、C语言回调java静态方法
+java类中的空方法及调用空方法的本地方法 
+```java
+    public static void  hello(){
+        System.out.println(" static method from callback C");
+    }
 
+    /**
+     * 作用是：让C代码调用Java中代码JNI.java中的hello()静态方法
+     */
+    public native void callbackHello();
 
+```
+C语言中具体实现
+```c++
+/**
+* 调用Java中的JNI类的PrintString方法
+*/
+JNIEXPORT void JNICALL Java_com_hhl_jnirundemo_JniUtils_callbackPrintString
+        (JNIEnv *env, jclass) {
+        //1.得到类的字节码
+        jclass clazz= env->FindClass("com/hhl/jnirundemo/JniUtils");
+        //2.得到对应的静态方法
+        // jmethodID  (*GetStaticMethodID)(JNIEnv*, jclass, const char*, const char*);
+        jmethodID methodID = env->GetStaticMethodID(clazz,"hello","()V");
+        //3.执行方法 void   (*CallStaticVoidMethod)(JNIEnv*, jclass, jmethodID, ...);
+        env->CallStaticVoidMethod(clazz,methodID);
+}
+```
+
+## 5.5、C语言回调java刷新界面
+此功能如果按照之前的在没有上下文的类中随便写的话，会报没有此方法的异常
+
+如果在mainactivity中刷新界面，就在此类中写Java代码
+并且如果javah mainactivity类的时候，报异常的话，可以直接copy别的.h文件来修改成我们想要的。
+```java
+    public native void callbackShowToast();
+    public void showToast() {
+        Toast.makeText(this, "from C Data to refresh Main !!!", Toast.LENGTH_SHORT).show();
+    }
+```
+C语言中具体实现
+```c++
+    //1.得到JNI类的字节码jclass (*FindClass)(JNIEnv*, const char*);
+    jclass clazz = env->FindClass("com/hhl/jnirundemo/MainActivity");
+    //2.得到方法
+    //jmethodID  (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+    jmethodID methodID = env->GetMethodID(clazz,"showToast","()V");
+    //3.执行PrintString()方法    void   (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+    // 创建C中的jstring(相当于java中的String): jstring   (*NewStringUTF)(JNIEnv*, const char*);
+//    char* text = "from C Data to refresh Main !!!";
+//    jstring cString =env->NewStringUTF(text);
+    env->CallVoidMethod(obj,methodID);//成功调用MainActivity中的showToast方法
+```
