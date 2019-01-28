@@ -209,6 +209,7 @@ add_library(share_lib SHARED lib.cpp)
  在Android.mk中 LOCAL_SRC_FILES :=a.cpp b.cpp
  
 - 引入第三方 so，.a 包(自己暂时没用到)
+如果编译有问题有可能是引用的.so文件不是对应的包内的，或者ndk配置ABI时没有指定对cpu架构。
  重新编写 mk 文件(根据实际情况会有所修改)：
  ```mk
    LOCAL_PATH := $(call my-dir)
