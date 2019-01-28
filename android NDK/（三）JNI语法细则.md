@@ -106,3 +106,129 @@ JNIEXPORT jint JNICALL Java_com_hhl_jnirundemo_JniPassParams_add
 ```
 
 # 4、综合案例使用
+简单的登录验证和密码加密算法，只是抛砖引玉，可以知道如果只是单纯的用自己的代码，那么如果用ndk-build的话，每一个cpp文件都要在android.mk中配置，否则就会爆出undefined reference to的错误
+android.mk文件内容：
+```android.mk
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE := JNISample
+LOCAL_SRC_FILES := com_hhl_jnirundemo_JniPassword.cpp md5/md5.cpp
+include $(BUILD_SHARED_LIBRARY)
+```
+jni目录下有md5文件，md5文件内有md5.h md5.cpp文件，加密算法在md5.cpp的文件内。
+
+# 5、C语言回调java方法
+其中前提要理解java反射的原理
+## 5.1、调用java空方法
+java类中的空方法及调用空方法的本地方法 
+```java
+public void helloFromJava(){
+}
+/**
+ * 调用C语言代码，C代码回调helloFromJava方法
+ */
+public native void callbackHelloFromJava();
+
+```
+C语言中具体实现
+```c++
+/**
+* 回调Java中JNI类中的HelloFromJava方法
+*/
+JNIEXPORT void JNICALL Java_com_hhl_jnirundemo_JniUtils_callbackHelloFromJava
+        (JNIEnv *env, jclass) {
+
+        //用反射
+        //1.首先得到字节码 jclass  (*FindClass)(JNIEnv*, const char*);第一个参数是要反射类的那个类的完整名称；但是需要把.改成/
+        jclass clazz = env->FindClass("com/hhl/jnirundemo/JniUtils");
+        //2.得到方法jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+        //倒数第二个方法：要回调的方法名；最后一个参数是方法签名
+        jmethodID methodID =env->GetMethodID(clazz,"helloFromJava","()V");
+        //3.Utils实例对象jobject   (*AllocObject)(JNIEnv*, jclass);
+        jobject  object =env->AllocObject(clazz);
+        //4.执行方法
+        //void   (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+        env->CallVoidMethod(object,methodID);//调用Java中的JNI中的HelloFromJava()方法了
+}
+```
+## 5.2、调用java中的带两个int参数的方法
+java类中的空方法及调用空方法的本地方法 
+```java
+    // C调用java中的带两个int参数的方法
+    public int javaAdd(int x, int y) {
+        System.out.println("java中add：" + (x+y));
+        return x + y;
+    }
+    /**
+     * 调用C语言代码，C代码回调add方法
+     */
+    public native void callbackAdd();
+
+```
+C语言中具体实现
+```c++
+/**
+* C回调Java中JNI.java中的add方法
+*/
+JNIEXPORT void JNICALL Java_com_hhl_jnirundemo_JniUtils_callbackAdd
+        (JNIEnv *env, jclass) {
+
+        //用反射
+        //1.首先得到字节码 jclass  (*FindClass)(JNIEnv*, const char*);第一个参数是要反射类的那个类的完整名称；但是需要把.改成/
+        jclass clazz = env->FindClass("com/hhl/jnirundemo/JniUtils");
+
+        //2.得到方法jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+        //倒数第二个方法：要回调的方法名；最后一个参数是方法签名
+        jmethodID methodID = env->GetMethodID(clazz,"javaAdd","(II)I");
+        //3.Utils实例对象jobject   (*AllocObject)(JNIEnv*, jclass);
+        jobject cObj = env->AllocObject(clazz);
+        //4.执行方法
+        //   jint     (*CallIntMethod)(JNIEnv*, jobject, jmethodID, ...);
+        int x = 10;
+        int y = 20;
+        int cInt= env->CallIntMethod(cObj,methodID,x,y);//调用了Java中JNI.java中的add()方法
+
+}
+```
+## 5.3、调用java中参数为string的方法
+
+java类中的空方法及调用空方法的本地方法 
+```java
+/**
+ * 调用C语言代码，C代码回调printString方法
+ */
+public native void callbackPrintString();
+
+    // C调用java中参数为string的方法
+    public void printString(String s) {
+        System.out.println("java中输入的：" + s);
+    }
+
+```
+C语言中具体实现
+```c++
+/**
+* 调用Java中的JNI类的PrintString方法
+*/
+JNIEXPORT void JNICALL Java_com_hhl_jnirundemo_JniUtils_callbackPrintString
+        (JNIEnv *env, jclass) {
+        //1.得到对应类字节码
+        // jclass (*FindClass)(JNIEnv*, const char*);//第一个参数是被调用对象的全类名；但是得把.换成/
+        jclass  clazz= env->FindClass("com/hhl/jnirundemo/JniUtils");
+        //2.得到对应的方法
+        // jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+        //倒数第二个参数：方法名;最后一个参数是方法签名
+        jmethodID  methodID =env->GetMethodID(clazz,"printString","(Ljava/lang/String;)V");
+
+        //3.得JNI的对象，设执行方法的对象jobject  (*AllocObject)(JNIEnv*, jclass);
+        jobject cObject= env->AllocObject(clazz);
+        //4.执行方法  jint   (*CallIntMethod)(JNIEnv*, jobject, jmethodID, ...);
+        //java String 和 C中的jstring;
+        //创建jstring:jstring (*NewStringUTF)(JNIEnv*, const char*);
+        char* text = " I am from C Data !!!";
+        jstring cString =env->NewStringUTF(text);
+        env->CallVoidMethod(cObject,methodID,cString);//C代码调用Java中JNI类的printString
+}
+```
+
+
