@@ -285,3 +285,5 @@ C语言中具体实现
 //    jstring cString =env->NewStringUTF(text);
     env->CallVoidMethod(obj,methodID);//成功调用MainActivity中的showToast方法
 ```
+
+至此，android的JNI开发的基本功能就到这里了，可根据自己的实际需要来发挥了。
