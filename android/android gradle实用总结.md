@@ -349,7 +349,7 @@ repositories {
   ```
           <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}">
+            android:value="${UMENG_CHANNEL_VALUE}"/>
   ```
   其中${UMENG_CHANNEL_VALUE}中的值就是你在gradle中自定义配置的值。
   - 在build.gradle设置productFlavors
@@ -454,7 +454,77 @@ repositories {
 
 Android Gradle的技巧还有很多，比如自定义生成的Res资源，自定义生成Java常量等等，他的技巧来源于他的灵活性、可扩展性以及和第三方工具软件的默契配合等，善用他，能提高构建效率，节省成本。
 ## 2.3、自动生成版本信息
-批量控制生成的APK文件名
+## 2.4、批量控制生成的APK文件名
+### 2.4.1、简单的区分release版本和debug版本
+在module gradle中的android的buildTypes下：
+```
+ buildTypes {
+        debug {
+            resValue "string", "app_name", "APPname测试版"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+```
+这样输出的debug App安装后会多出测试版的字样
+### 2.4.2、复杂的有应用名、渠道、日期等的apk
+在讲批量修改APK文件名之前，我们讲一下关于Android Gradle插件集成的Task任务问题。普通的Java工程比较简单，因为它有一个有限的任务集合，而且它的属性或者方法都是Java Gradle插件添加的，比较固定，而且我们访问任务以及任务里的方法和属性都比较方便，比如classes这个编译Java源代码的任务，我们通过project.tasks.classes就可以访问它，非常快捷。
+
+但是对于Android工程，就不行了，Android工程相对与Java工程来说，要复杂的多，因为它有很多相同的任务，这些任务的名字都是通过Build Types和Product Flavors 生成的，是动态的创建和生成的，而且时机比较靠后，如果你还像原来一样在某个闭包里通过project.tasks获取一个任务，会提示找不到该任务，因为还没有生成。
+既然要修改生成的Apk文件名，那么我们就要修改Android Gradle打包的输出，为了解决上面提到的问题（不限于此），android对象为我们提供了2个属性：
+- applicationVariants (仅仅适用于Android应用Gradle插件)
+- libraryVariants (仅仅适用于Android库Gradle插件)
+- testVariants (以上两种Gradle插件都使用)
+以上三个属性返回的都是DomainObjectSet对象集合，里面元素分别是ApplicationVariant、LibraryVariant和TestVariant。这三个元素直译来看是变体，通俗的讲他们就是Android构建的产物，比如ApplicationVariant可以代表google渠道的release包，也可以代表dev开发用的debug包，我们上面提到了，他们基于Build Types和Product Flavors生成的产物。
+特别注意的是，访问以上这三种集合都会触发创建所有的任务，这意味着访问这些集合后无须重新配置就会产生，也就是说假如我们通过访问这些集合，修改生成Apk的输出文件名，那么就会自动的触发创建所有任务，此时我们修改后的新的Apk文件名就会起作用，达到可我们修改Apk文件名的目的，因为这些是一个集合，包含我们所有生成的产物，所以我们只需要进行迭代，就可以达到我们批量修改Apk文件名的目的。
+
+具体操作如下：
+在module的gradle中定义获取时间的方法：
+```
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
+}
+```
+如果gradle3.0以下的，在android目录下添加如下代码：
+```
+applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')
+                    &&'release'.equals(variant.buildType.name)) {
+                def flavorName = variant.flavorName.startsWith("_") ? variant.flavorName.substring(1) : variant.flavorName
+                def apkFile = new File(
+                        output.outputFile.getParent(),
+                        "App_${flavorName}_v${variant.versionName}_${buildTime()}.apk")
+                output.outputFile = apkFile
+            }
+        }
+    }
+```
+如果是gradle3.以上的则改为：
+```
+    applicationVariants.all{ variant ->
+        variant.outputs.all {  output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
+                def flavorName = variant.flavorName.startsWith("_") ? variant.flavorName.substring(1) : variant.flavorName
+                outputFileName = "App_${flavorName}_v${variant.versionName}_${buildTime()}.apk"
+            }
+        }
+    }
+```
+
+applicationVariants是一个DomainObjectCollection集合，我们可以通过all方法进行遍历，遍历的每一个variant都是一个生成的产物，针对示例，共有googleRelease和googleDebug两个产物，所以遍历的variant共有googleRelease和googleDebug。
+
+applicationVariants中的variant都是ApplicationVariant，通过查看源代码，可以看到它有一个outputs作为它的输出，每一个ApplicationVariant至少有一个输出，也可以有多个，所以这里的outputs属性是一个List集合，我们再遍历它，如果它的名字是以.apk结尾的话那么就是我们要修改的apk名字了，然后我们就可以根据需求，修改成我们想要的名字。
+
+我这里修改的是以项目名_渠道名_v版本名称_构建日期.apk格式生成的文件名，这样通过文件名就可以了解该apk的基本信息，比如什么渠道，什么版本，什么时候构建的等等，最后生成的示例apk名字为App_google_v1.0_20170217.apk，大家可以运行测试一下，注意buildTime这个我们自定义的返回日期格式的方法.
+
+
+
+
 自动瘦身APK文件
 善用AndroidManifest占位符
  
