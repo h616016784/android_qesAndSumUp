@@ -263,7 +263,72 @@ repositories {
  <https://juejin.im/post/58eae7e5a22b9d0058a88a56>
 
 ## 2.1、android签名和秘钥管理
-  
+  项目打包需要签名文件，我们可以手动用选择文件方式打包文件，也可以通过gradle配置好后自动打包，用gradle打包具体分为两种
+ ### 2.1.1 文件和密码都放在项目中
+ 简单方便，但是安全性不好。
+ 具体配置如下：
+ 在module中的android模块内加入如下代码
+ ```
+ signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '------'
+            storeFile file('C:/Users/----/Desktop/tempkeystore/jnirundemo.jks')
+            storePassword '------'
+        }
+    }
+ ```
+ 其中storeFile是存放签名文件的路径，次文件可以放在本地也可以放在项目中去，以上是放在本地中，将文件放在项目中要进行如下更改：
+ ```
+  storeFile file(getProperty("KSTORE"))
+ ```
+ getProperty是获取文件路径，其参数“kstore”要在gradle.properties文件中配置好签名文件在项目的路径下，代码如下：
+ ```
+  KSTORE=key/uschool.keystore
+ ```
+ 运行程序即可。
+ ### 2.1.2 文件和密码与项目分离
+ 将密码和签名文件地址等配置到local.properties文件中，当然也可以配置到别的文件中或者别的地方（环境变量中，还有这种操作，牛）
+ git设置忽略的文件包括local.properties文件
+ 在local.properties的文件中配置如下
+ ```
+  keystore.path=C\:\\Users\\---\\Desktop\\tempkeystore\\jnirundemo.jks
+  keystore.password=------
+  keystore.alias=key0
+  keystore.alias_password=------
+ ```
+ 在module gradle中的android下代码如下：
+ ```
+     def keystoreFilepath = ''
+    def keystorePSW = ''
+    def keystoreAlias = ''
+    def keystoreAliasPSW = ''
+// default keystore file, PLZ config file path in local.properties
+    def keyfile = file('s.keystore.temp')
+
+    Properties properties = new Properties()
+// local.properties file in the root director
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    keystoreFilepath = properties.getProperty("keystore.path")
+
+    if (keystoreFilepath) {
+        keystorePSW = properties.getProperty("keystore.password")
+        keystoreAlias = properties.getProperty("keystore.alias")
+        keystoreAliasPSW = properties.getProperty("keystore.alias_password")
+        keyfile = file(keystoreFilepath)
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreAlias
+            keyPassword keystoreAliasPSW
+            storeFile keyfile
+            storePassword keystorePSW
+        }
+    }
+ ```
+ 
+ 伸展：以上就是基本的方法，可根据自己的实际需要来选取，也可以在项目中存放签名文件，但是密码设置到本地文件中，这个要自己权衡和取舍。
 ## 2.2、自动化多渠道快速打包APK
   参考 <http://godcoder.me/2016/01/03/AndroidStudio%E4%BD%BF%E7%94%A8Gradle%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85/>
   ### 2.2.1、使用android gradle原生打包
