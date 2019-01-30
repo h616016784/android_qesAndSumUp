@@ -328,7 +328,18 @@ repositories {
     }
  ```
  
- 伸展：以上就是基本的方法，可根据自己的实际需要来选取，也可以在项目中存放签名文件，但是密码设置到本地文件中，这个要自己权衡和取舍。
+ 伸展：以上就是基本的方法，可根据自己的实际需要来选取，也可以在项目中存放签名文件，但是密码设置到本地文件中，这个要自己权衡和取舍。我们在打包的时候都会在buildTypes中设置release和debug选项，不同选项签名设置也会不一样
+  ```
+  debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+  ```
+  这样打包时候会自动找到不同的签名文件。
 ## 2.2、自动化多渠道快速打包APK
   参考 <http://godcoder.me/2016/01/03/AndroidStudio%E4%BD%BF%E7%94%A8Gradle%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85/>
   ### 2.2.1、使用android gradle原生打包
