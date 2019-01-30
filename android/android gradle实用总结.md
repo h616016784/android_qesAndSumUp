@@ -508,7 +508,8 @@ applicationVariants.all { variant ->
 ```
     applicationVariants.all{ variant ->
         variant.outputs.all {  output ->
-            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')){
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')
+            &&'release'.equals(variant.buildType.name)){
                 def flavorName = variant.flavorName.startsWith("_") ? variant.flavorName.substring(1) : variant.flavorName
                 outputFileName = "App_${flavorName}_v${variant.versionName}_${buildTime()}.apk"
             }
