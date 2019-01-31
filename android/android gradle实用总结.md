@@ -628,7 +628,22 @@ applicationVariants中的variant都是ApplicationVariant，通过查看源代码
 }
  ```
  Android Gradle为我们提供的manifestPlaceholders占位符的方式，让我们可以替换AndroidManifest文件中任何${Var}格式的占位符，所以它的使用场景不限于渠道名这一个，比如还有ContentProvider的auth的授权，或者其他动态想配置meta信息等等，灵活的运用它能帮助我们做很多事情，让我们的构建更灵活，更方便。
-## 2.6、自动瘦身APK文件
+## 2.6、日志开关
+可以直接用BuildConfig.DEBUG，也可以自定义
+在 app/build.gradle 文件中分别定义 debug 和 release 不同编译模式的控制变量，变量名可自由更改：
+```
+buildTypes {
+    debug {
+        buildConfigField "boolean", "DEBUG_MODE", "true"
+    }
+    release {
+        buildConfigField "boolean", "DEBUG_MODE", "false"
+    }
+}
+
+```
+重新编译后，自动生成的 BuildConfig 类中包含上面定义的 DEBUG_MODE 属性，即可使用。
+## 2.7、自动瘦身APK文件
   待续。。。。
  
  
