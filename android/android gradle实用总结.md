@@ -483,7 +483,41 @@ android {
 }
 ```
 ### 2.3.2、动态获取版本号
+有从tag上获取版本号的，一般用Jenkins打包发布的时候，我们都会从我们已经打好的一个tag打包发布，这个方法没试过，以后可以尝试；
+直接在module中写如下代码
+```
+// 版本号自增
+task('increaseVersionCode') << {
+    def buildFile = file("build.gradle")
+    def pattern = Pattern.compile("versionCode\\s+(\\d+)")
+    def manifestText = buildFile.getText()
+    def matcher = pattern.matcher(manifestText)
+    matcher.find()
+    def versionCode = Integer.parseInt(matcher.group(1))
+    def manifestContent = matcher.replaceAll("versionCode " + ++versionCode)
+    buildFile.write(manifestContent)
+}
 
+// 版本号自增
+tasks.whenTaskAdded { task ->
+    if (task.name.matches('assemble.*?Release')) {
+        task.dependsOn 'increaseVersionCode'
+    }
+}
+```
+此方法只适合个人开发者，两个以上就不能用了
+
+大致思路如下：
+
+  在项目目录下新建一个version.properties的属性文件。
+  把版本名称分成三部分major.minor.patch，版本号分成一部分number，然后在version.properties中新增四个KV键值对，其key就是我们上面分好的major，minor，patch以及number，value是对应的值。
+  然后在build.gradle里新建两个方法，用于读取该属性文件，获取对应Key的值，然后把major.minor.patch这三个key拼接成版本名称，number用于版本号。
+  以上就达到了获取版本信息的目的，获取使用之后，我们还要更新我们存放在version.properties文件中的信息，这样就可以达到版本自增的目的，以供下次使用。
+  在更新版本名称三部分的时候，你可以自定义自己的逻辑，是逢10高位+1呢，还是其他算法，都可以自己灵活定义。
+  使用版本信息，更新version.properties文件的时机，记得doLast这个方法。
+  记得不会在自己运行调试的时候让你的版本信息自增哦，如何控制呢？就是要区分是真正的打包发版，还是平时的调试、测试，有很多办法来区分的。
+  
+动态获取生成版本信息的思路都大同小异，只是信息来源不一样，比如git tag，比如version配置等等，你自己的业务项目中还可以从其他更多的渠道来生成，这也是因为gradle的灵活，我们才可以随心所欲的做到这么多
 ## 2.4、批量控制生成的APK文件名
 ### 2.4.1、简单的区分release版本和debug版本
 在module gradle中的android的buildTypes下：
@@ -552,9 +586,49 @@ applicationVariants是一个DomainObjectCollection集合，我们可以通过all
 applicationVariants中的variant都是ApplicationVariant，通过查看源代码，可以看到它有一个outputs作为它的输出，每一个ApplicationVariant至少有一个输出，也可以有多个，所以这里的outputs属性是一个List集合，我们再遍历它，如果它的名字是以.apk结尾的话那么就是我们要修改的apk名字了，然后我们就可以根据需求，修改成我们想要的名字。
 
 我这里修改的是以项目名_渠道名_v版本名称_构建日期.apk格式生成的文件名，这样通过文件名就可以了解该apk的基本信息，比如什么渠道，什么版本，什么时候构建的等等，最后生成的示例apk名字为App_google_v1.0_20170217.apk，大家可以运行测试一下，注意buildTime这个我们自定义的返回日期格式的方法.
+## 2.5、善用AndroidManifest占位符
+  占位符，其实是一个可以被替换的临时标记，比如${name},我们就可以使用真实的name变量的值替换这个占位符，达到可以动态的修改这个占位符的目的。所以AndroidManifest文件的占位符，其实是帮助我们动态修改AndroidManifest文件里的内容，这样的例子非常多，比如我们使用友盟等第三方分析统计的时候，会要求我们在AndroidManifest文件中指定渠道名称。
+  ```
+  <meta-data android:value="${UMENG_CHANNEL}" android:name="UMENG_CHANNEL"/>
+  ```
+  对于这种情况Android Gradle为我们提供了非常便捷的方法让我们来替换AndroidManifest文件中的内容，它就是ManifestPlaceholder，Manitest占位符。
+  manifestPlaceholders是ProductFlavor的一个属性，他是一个Map类型，所以我们可以同时配置很多个占位符。下面我们就通过这个配置渠道号的例子来演示manifestPlaceholders的用法。
+  ```
+  android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
+    productFlavors {
+        google {
+            manifestPlaceholders.put("UMENG_CHANNEL","google")
+        }
+        baidu {
+            manifestPlaceholders.put("UMENG_CHANNEL","baidu")
+        }
+    }
+}
+  ```
+  
+ 如果渠道太多，我们可以通过迭代productFlavors批量的方式进行修改。
+ ```
+ android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
-自动瘦身APK文件
-善用AndroidManifest占位符
+    productFlavors {
+        google {
+        }
+        baidu {
+        }
+    }
+
+    productFlavors.all { flavor ->
+        manifestPlaceholders.put("UMENG_CHANNEL",name)
+    }
+}
+ ```
+ Android Gradle为我们提供的manifestPlaceholders占位符的方式，让我们可以替换AndroidManifest文件中任何${Var}格式的占位符，所以它的使用场景不限于渠道名这一个，比如还有ContentProvider的auth的授权，或者其他动态想配置meta信息等等，灵活的运用它能帮助我们做很多事情，让我们的构建更灵活，更方便。
+## 2.6、自动瘦身APK文件
+  待续。。。。
  
  
