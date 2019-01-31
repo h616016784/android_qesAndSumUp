@@ -454,6 +454,36 @@ repositories {
 
 Android Gradle的技巧还有很多，比如自定义生成的Res资源，自定义生成Java常量等等，他的技巧来源于他的灵活性、可扩展性以及和第三方工具软件的默契配合等，善用他，能提高构建效率，节省成本。
 ## 2.3、自动生成版本信息
+### 2.3.1、简单的管理版本信息
+ gradle提供了顶级应用的属性变量设置 ext，可根据此来管理我们的版本信息，在顶级gradle中定义变量，所有module都可以共用。
+在顶级gradle中加入如下代码：
+```
+ext {
+    appVersionCode =1
+    appVersionName = "1.0.0"
+}
+```
+ ext{}块表明我们要为当前project创建扩展属性，以供其他脚本引用，他就像我们java里的变量一样。创建好之后，我们在build.gradle中引用它。
+在引用处添加如下代码：
+```
+      versionCode rootProject.ext.appVersionCode
+      versionName rootProject.ext.appVersionName
+```
+这样就可以在一个地方统一更改版本号了。也可以修改一下，不在顶级gradle中，新建一个version.gradle文件，ext{}代码块放在其中，然后再引用处引入才文件并使用，代码如下：
+```
+apply from: 'version.gradle'
+android {
+    defaultConfig {
+        applicationId "org.flysnow.app"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode appVersionCode
+        versionName appVersionName
+    }
+}
+```
+### 2.3.2、动态获取版本号
+
 ## 2.4、批量控制生成的APK文件名
 ### 2.4.1、简单的区分release版本和debug版本
 在module gradle中的android的buildTypes下：
@@ -522,8 +552,6 @@ applicationVariants是一个DomainObjectCollection集合，我们可以通过all
 applicationVariants中的variant都是ApplicationVariant，通过查看源代码，可以看到它有一个outputs作为它的输出，每一个ApplicationVariant至少有一个输出，也可以有多个，所以这里的outputs属性是一个List集合，我们再遍历它，如果它的名字是以.apk结尾的话那么就是我们要修改的apk名字了，然后我们就可以根据需求，修改成我们想要的名字。
 
 我这里修改的是以项目名_渠道名_v版本名称_构建日期.apk格式生成的文件名，这样通过文件名就可以了解该apk的基本信息，比如什么渠道，什么版本，什么时候构建的等等，最后生成的示例apk名字为App_google_v1.0_20170217.apk，大家可以运行测试一下，注意buildTime这个我们自定义的返回日期格式的方法.
-
-
 
 
 自动瘦身APK文件
