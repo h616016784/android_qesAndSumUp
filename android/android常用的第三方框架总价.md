@@ -8,3 +8,8 @@
  ## 2.1 Volley
   简单地进行HTTP通信、加载网络，适合去进行数据量不大，但通信频繁的网络操作，高分辨率的图像压缩上有很好的支持，封装了URL图片加载框架；可扩展性好，可支持HttpClient、HttpUrlConnection和Okhttp。
   参考地址： [郭神的volley系列](https://blog.csdn.net/guolin_blog/article/details/17482095)
+  ## 2.2  OkHttp
+  Android 2.3以上，可以理解为类似于HttpURLConnection的一个东西，非常高效，支持SPDY、连接池、GZIP和 HTTP 缓存；
+  基于NIO和Okio，所以性能比较好，请求处理速度快（IO:阻塞式；NIO:非阻塞式；Okio是Square公司基于IO和NIO做的一个更简单、高效处理数据流的一个库）;
+  4.4开始HttpURLConnection的底层实现采用的是okHttp。
+
