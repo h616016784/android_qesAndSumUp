@@ -14,3 +14,6 @@
  1、基本知识可参考地址<https://juejin.im/entry/58d7635e5c497d0057fae036>
  
  2、https的原理也可参考地址<https://juejin.im/entry/59f1b593f265da430b7a7898>
+# 四、https应用
+ 1、Android使用https参考地址<https://www.jianshu.com/p/3beebdf846bb>
+ 2、也可以参考这个网址<https://www.cnblogs.com/alisecurity/p/5939336.html>
