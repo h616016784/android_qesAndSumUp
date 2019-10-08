@@ -12,4 +12,5 @@
   详细可参考地址 <https://blog.csdn.net/u013777351/article/details/49226101>
 # 三、HTTP与HTTPS的区别以及如何实现安全性
  1、基本知识可参考地址<https://juejin.im/entry/58d7635e5c497d0057fae036>
+ 
  2、https的原理也可参考地址<https://juejin.im/entry/59f1b593f265da430b7a7898>
