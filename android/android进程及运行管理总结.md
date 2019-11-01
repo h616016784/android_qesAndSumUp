@@ -105,6 +105,13 @@ Activity其他生命周期的调用都是通过Binder向AMS发请求，然后执
 
 理解也可以参考<https://blog.csdn.net/huachao1001/article/details/51866287>
 
+# 3、android启动原理
 
+## 3.1、android启动
+参考地址[Android 7.0 启动篇 — init原理（一）](https://www.cnblogs.com/pepsimaxin/p/6702945.html)
+参考地址[Android 7.0 启动篇 — init原理（二）](https://www.cnblogs.com/pepsimaxin/p/6740413.html)
 
+## 3.2、app启动原理
+
+参考地址[Android开发】Android Framework的启动方法及原理详解](http://m.maiziedu.com/article/11008/)
  
