@@ -10,6 +10,7 @@
 参考地址[java重写hashcode方法那点事](https://blog.csdn.net/zhengchao1991/article/details/78916471)
 ## 4、java集合方面总计
 参考地址[hashmap与hashtable的区别](https://www.jianshu.com/p/939b8a672070)
+参考地址：[ConcurrentHashMap原理探究](https://www.cnblogs.com/huangjuncong/p/9478505.html)
 ## 5、java多线程方面总结
 ## 6、java反射方面总结
 ## 7、java的socket方面使用
