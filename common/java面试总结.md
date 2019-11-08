@@ -13,6 +13,7 @@
 
 参考地址：[ConcurrentHashMap原理探究](https://www.cnblogs.com/huangjuncong/p/9478505.html)
 ## 5、java多线程方面总结
+参考地址[java多线程面试和答案](https://blog.csdn.net/ll666634/article/details/78615505)
 ## 6、java反射方面总结
 ## 7、java的socket方面使用
 ## 8、
