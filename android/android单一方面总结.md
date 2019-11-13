@@ -13,3 +13,16 @@ recycleview的缓存机制参考[]()
 其中loop原理参考地址：[Android中Looper原理](https://blog.csdn.net/u014803950/article/details/80832581)
 
 还有ThreadLocal原理：参考地址[彻底理解ThreadLocal](https://www.cnblogs.com/ldq2016/p/9041856.html)
+
+## 四、ActivityLifecycleCallbacks详解
+
+作用：
+- 限制指定的Activity的数量
+
+- 控制在特定情况下只会有一个Activity被打开
+
+- 判断App前后台状态
+
+参考地址：[Android使用ActivityLifecycleCallbacks管理Activity和区分App前后台](https://www.cnblogs.com/renhui/p/11074604.html)
+
+也可参考地址：[探究 Android 中的 ActivityLifecycleCallbacks](https://www.jianshu.com/p/77f754446009)
