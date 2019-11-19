@@ -31,4 +31,6 @@ recycleview的缓存机制参考[]()
 
 关于canvas.save()和canvas.restore()可以参考地址[canvas save()和canvas restore()状态的保存和恢复使用方法及实例](https://www.cnblogs.com/mmzuo-798/p/9969188.html)
 
+散杂的view转换成图片 参考地址[Android 把View转为图片](https://www.jianshu.com/p/3d03c66cf169?tdsourcetag=s_pctim_aiomsg),还有直接把图片保存本地的参考[Android之布局（layout）转化成图片（bitmap）](https://blog.csdn.net/qq_36347817/article/details/85985603)
+
 
