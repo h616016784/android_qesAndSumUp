@@ -26,11 +26,21 @@ recycleview的缓存机制参考[]()
 参考地址：[Android使用ActivityLifecycleCallbacks管理Activity和区分App前后台](https://www.cnblogs.com/renhui/p/11074604.html)
 
 也可参考地址：[探究 Android 中的 ActivityLifecycleCallbacks](https://www.jianshu.com/p/77f754446009)
-## android绘制图片机制
+## 五、 android绘制图片机制
 主要参考地址：[Android绘图机制与处理技巧（一）——Android绘图技巧](https://blog.csdn.net/tw19911005/article/details/51461239)
 
 关于canvas.save()和canvas.restore()可以参考地址[canvas save()和canvas restore()状态的保存和恢复使用方法及实例](https://www.cnblogs.com/mmzuo-798/p/9969188.html)
 
 散杂的view转换成图片 参考地址[Android 把View转为图片](https://www.jianshu.com/p/3d03c66cf169?tdsourcetag=s_pctim_aiomsg),还有直接把图片保存本地的参考[Android之布局（layout）转化成图片（bitmap）](https://blog.csdn.net/qq_36347817/article/details/85985603)
 
+## 六、RxJava入门到精通
+rxjava的基础参考地址是[给 Android 开发者的 RxJava 详解](http://gank.io/post/560e15be2dca930e00da1083)
+
+rxjava的使用参考地址[RxJava 2.0 官方文档中文版](https://www.jianshu.com/p/733c19794fdf)
+
+rxjava的采坑集合参考地址[RxJava 常见误区（一）：过度使用 Subject](https://blog.csdn.net/love_yan_1314/article/details/60145183)
+
+## 七、APP的缓存策略
+
+app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到底应该存在哪？](https://blog.csdn.net/shakespeare001/article/details/50546809)
 
