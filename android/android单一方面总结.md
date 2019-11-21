@@ -33,6 +33,7 @@ recycleview的缓存机制参考[]()
 
 散杂的view转换成图片 参考地址[Android 把View转为图片](https://www.jianshu.com/p/3d03c66cf169?tdsourcetag=s_pctim_aiomsg),还有直接把图片保存本地的参考[Android之布局（layout）转化成图片（bitmap）](https://blog.csdn.net/qq_36347817/article/details/85985603)
 
+canvas的使用总结参考地址:[Android Canvas方法总结](https://www.cnblogs.com/javasxl/p/9397770.html)
 ## 六、RxJava入门到精通
 rxjava的基础参考地址是[给 Android 开发者的 RxJava 详解](http://gank.io/post/560e15be2dca930e00da1083)
 
