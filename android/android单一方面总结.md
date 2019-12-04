@@ -36,6 +36,8 @@ recycleview的缓存机制参考[]()
 canvas的使用总结参考地址:[Android Canvas方法总结](https://www.cnblogs.com/javasxl/p/9397770.html)
 
 图片的缩放、移动,Matrix的基本操作参考地址:[Android矩阵（Matrix）简单使用](https://blog.csdn.net/MonaLisaTearr/article/details/80177726)具体的实践例子可参考地址：[Android:手把手教你打造可缩放移动的ImageView（上）](https://www.cnblogs.com/linjzong/p/4211661.html)。
+
+android的图片显示原理 参考地址:[android图像显示底层远原理](https://sufushi.github.io/2018/03/08/android%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E5%BA%95%E5%B1%82%E8%BF%9C%E5%8E%9F%E7%90%86/)
 ## 六、RxJava入门到精通
 rxjava的基础参考地址是[给 Android 开发者的 RxJava 详解](http://gank.io/post/560e15be2dca930e00da1083)
 
