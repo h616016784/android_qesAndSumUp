@@ -115,3 +115,8 @@ Activity其他生命周期的调用都是通过Binder向AMS发请求，然后执
 
 参考地址[Android开发】Android Framework的启动方法及原理详解](http://m.maiziedu.com/article/11008/)
  
+# 4、android虚拟机
+
+参考地址[深入理解Android中的ClassLoader](https://juejin.im/post/5a28e7e86fb9a045117105c3)
+
+参考地址[Android类加载器ClassLoader](http://gityuan.com/2017/03/19/android-classloader)
