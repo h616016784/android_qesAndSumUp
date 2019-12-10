@@ -113,7 +113,7 @@ Activity其他生命周期的调用都是通过Binder向AMS发请求，然后执
 
 ## 3.2、app启动原理
 
-参考地址[Android开发】Android Framework的启动方法及原理详解](http://m.maiziedu.com/article/11008/)
+参考地址[Android开发】Android Framework的启动方法及原理详解](https://www.jianshu.com/p/2e1d7adb7f45)
  
 # 4、android虚拟机
 
