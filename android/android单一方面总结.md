@@ -52,3 +52,6 @@ rxjava的使用场景参考地址[Android RxJava实际应用案例讲解：使�
 
 app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到底应该存在哪？](https://blog.csdn.net/shakespeare001/article/details/50546809)
 
+## 八、view的捡漏
+参考地址[Android中RelativeLayout和LinearLayout性能分析](https://www.jianshu.com/p/8a7d059da746)
+
