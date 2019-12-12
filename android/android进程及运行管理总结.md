@@ -114,6 +114,16 @@ Activity其他生命周期的调用都是通过Binder向AMS发请求，然后执
 ## 3.2、app启动原理
 
 参考地址[Android开发】Android Framework的启动方法及原理详解](https://www.jianshu.com/p/2e1d7adb7f45)
+
+一.Launcher接收到Click Event，获取应用信息之后，会通过Binder IPC机制向ActivityManagerService（简称AMS）发起启动应用（startActivity(intent)）的请求。此时AMS会做以下三个内部操作：
+1.通过PackageManager的resolveIntent方法收集这个intent对象的指向信息，并将指向信息存储在一个intent对象中；
+2.通过grantUriPermissionLocked方法来验证用户是否有足够的权限去调用该intent对象指向的Activity
+3.如果有权限，AMS会检查并在新的task中启动目标Activity
+二、待AMS做完上述三个内部操作外，它会检查这个进程的ProcessRecord是否存在。如果ProcessRecord是null，启动进程会调用AMS的startProcessLocked方法，内部调用Process的start方法，通过socket通道传递参数给Zygote进程
+三、之后Zygote进程会通过孵化自身的方式去fork一个新的Linux进程（此处特指UI进程），并调用ZygoteInit.main()方法来实例化ActivityThread对象并最终返回新进程的pid
+四、进程创建之后会加载ActivityThread，执行ActivityThread的main方法。然后再main方法中会实例化ActivityThread，同时创建ApplicationThread，Looper，Hander对象，调用attach方法进行Binder通信。随后依次调用Looper.prepareLoop()和Looper.loop()来开启消息循环
+五、接下来要做的就是将进程和指定的Application绑定起来。 这个是通过上一步的ActivityThread对象中调用bindApplication()方法完成的，该方法发送一个BIND_APPLICATION的消息到消息队列中，最终通过handleBindApplication()方法处理该消息，然后调用makeApplication()方法来加载App的classes到内存中
+六、统已经拥有了该application的进程. 后面的调用顺序就是普通的从一个已经存在的进程中启动一个新进程的activity了。实际调用方法是realStartActivity()，它会调用application线程对象中的sheduleLaunchActivity()方法发送一个LAUNCH_ACTIVITY消息到消息队列中，通过 handleLaunchActivity()来处理该消息
  
 # 4、android虚拟机
 
