@@ -98,3 +98,6 @@
   计算优化，避开浮点运算等。
   避免 WaleLock 使用不当。
   使用 Job Scheduler
+  ## 3.6 　网络方面的优化
+  ### 3.6.1 token失效问题
+  参考地址[Android处理token失效的处理方法](https://blog.csdn.net/xulike1990/article/details/60581466)
