@@ -103,4 +103,7 @@
   参考地址[Android处理token失效的处理方法](https://blog.csdn.net/xulike1990/article/details/60581466)
   ### 3.6.2 网络重连机制
   参考地址:[Volley请求的重发机制](https://blog.csdn.net/jez/article/details/85762630)
+  
+  而okhttp可以在创建okhttpclient的时候设置是否断线重连，默认是true。其重连机制参考地址[okHttp重试机制](https://blog.csdn.net/fengrui_sd/article/details/79004691)
+  如果我们想自定义重连机制，则需要自定义拦截器, 参考地址[OkHttp自定义重试次数](https://blog.csdn.net/zhousenshan/article/details/86664768)
  
