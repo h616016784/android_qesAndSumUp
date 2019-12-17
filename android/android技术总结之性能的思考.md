@@ -101,3 +101,6 @@
   ## 3.6 　网络方面的优化
   ### 3.6.1 token失效问题
   参考地址[Android处理token失效的处理方法](https://blog.csdn.net/xulike1990/article/details/60581466)
+  ### 3.6.2 网络重连机制
+  参考地址:[Volley请求的重发机制](https://blog.csdn.net/jez/article/details/85762630)
+ 
