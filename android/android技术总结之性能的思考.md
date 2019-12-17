@@ -106,4 +106,5 @@
   
   而okhttp可以在创建okhttpclient的时候设置是否断线重连，默认是true。其重连机制参考地址[okHttp重试机制](https://blog.csdn.net/fengrui_sd/article/details/79004691)
   如果我们想自定义重连机制，则需要自定义拦截器, 参考地址[OkHttp自定义重试次数](https://blog.csdn.net/zhousenshan/article/details/86664768)
- 
+   ### 3.6.3 弱网条件下的优化
+   参考地址：[android弱网下优化](https://blog.csdn.net/u010648159/article/details/76511786)
