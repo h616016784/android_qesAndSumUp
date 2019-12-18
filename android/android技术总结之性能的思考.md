@@ -99,6 +99,7 @@
   避免 WaleLock 使用不当。
   使用 Job Scheduler
   ## 3.6 　网络方面的优化
+  网络方面的优化，本项目做过的优化有： token失效优化（okhttp拦截器），默认的压缩与缓存机制，监听设备状态在wifi的情况下splash图片预加载、断点续传、上传错误日志，监听网络状态好的时候上传图片，
   ### 3.6.1 token失效问题
   参考地址[Android处理token失效的处理方法](https://blog.csdn.net/xulike1990/article/details/60581466)
   ### 3.6.2 网络重连机制
@@ -119,4 +120,7 @@
    
    2,http的缓存原理，参考地址[Http缓存机制与原理](https://blog.csdn.net/jutal_ljt/article/details/80021545)
    okhttp使用缓存的策略实例有：有网时请求网络，无网络时使用缓存数据，参考地址[OkHttp缓存使用指南](https://segmentfault.com/a/1190000012922833)
+   3，监听设备状态来做优化处理
+   可以参考地址[JobScheduler](https://www.cnblogs.com/leipDao/p/8268918.html)
    
+   4，弱网条件下优化
