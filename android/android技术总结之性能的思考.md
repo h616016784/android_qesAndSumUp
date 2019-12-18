@@ -110,6 +110,7 @@
    参考地址：[android弱网下优化](https://blog.csdn.net/u010648159/article/details/76511786)
    ### 3.6.4 网络优化方案
    其中要先知道的的基础知识：
+   
    1,Http的报文压缩原理  参考地址[Http之报文压缩](https://blog.csdn.net/lvxiangan/article/details/77568801)
    
    okhttp和volley的使用可参考[HttpUrlConnection之gzip相关](https://blog.csdn.net/devilnov/article/details/53540585)
@@ -117,4 +118,5 @@
    关于http压缩与网络框架的也可以参考[聊聊HTTP gzip压缩与常见的Android网络框架](https://www.cnblogs.com/ct2011/p/5835990.html)
    
    2,http的缓存原理，参考地址[Http缓存机制与原理](https://blog.csdn.net/jutal_ljt/article/details/80021545)
+   okhttp使用缓存的策略实例有：有网时请求网络，无网络时使用缓存数据，参考地址[OkHttp缓存使用指南](https://segmentfault.com/a/1190000012922833)
    
