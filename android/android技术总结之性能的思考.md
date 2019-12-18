@@ -108,3 +108,10 @@
   如果我们想自定义重连机制，则需要自定义拦截器, 参考地址[OkHttp自定义重试次数](https://blog.csdn.net/zhousenshan/article/details/86664768)
    ### 3.6.3 弱网条件下的优化
    参考地址：[android弱网下优化](https://blog.csdn.net/u010648159/article/details/76511786)
+   ### 3.6.4 网络优化方案
+   其中要先知道的的基础知识：
+   1,Http的报文压缩原理  参考地址[Http之报文压缩](https://blog.csdn.net/lvxiangan/article/details/77568801)
+   okhttp和volley的使用可参考[HttpUrlConnection之gzip相关](https://blog.csdn.net/devilnov/article/details/53540585)
+   
+   2,http的缓存原理，参考地址[Http缓存机制与原理](https://blog.csdn.net/jutal_ljt/article/details/80021545)
+   
