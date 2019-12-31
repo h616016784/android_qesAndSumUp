@@ -1,8 +1,13 @@
 
 # 1、数据统计
-## 1、基础知识
+## 1、anr方面
 anr异常的原理，参考地址[关于ANR异常捕获与分析，你所需要知道的一切](https://codezjx.com/2017/08/06/anr-trace-analytics/)
 也可以使用腾讯的Bugly-SDK 来实现捕获anr异常
+anr分析细节参考：[ANR错误解析](https://www.jianshu.com/p/e32bbcb969d3)
+anr常用的分析套路　：[ANR分析套路](https://blog.csdn.net/qq475703980/article/details/80428514)
+
+## 2 卡顿方面
+
 
 # 2、模块化
 ## 1、基础知识：
