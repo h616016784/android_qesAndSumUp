@@ -7,7 +7,7 @@ anr分析细节参考：[ANR错误解析](https://www.jianshu.com/p/e32bbcb969d3
 anr常用的分析套路　：[ANR分析套路](https://blog.csdn.net/qq475703980/article/details/80428514)
 
 ## 2 卡顿方面
-
+参考地址为：[卡顿分析方法](https://blog.csdn.net/weixin_34038293/article/details/93036067)
 
 # 2、模块化
 ## 1、基础知识：
