@@ -55,3 +55,5 @@ app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到
 ## 八、view的捡漏
 参考地址[Android中RelativeLayout和LinearLayout性能分析](https://www.jianshu.com/p/8a7d059da746)
 
+## 九、okhttp实际解决的问题
+餐空地址[利用inercepter来处理异常情况](https://segmentfault.com/a/1190000020694029?utm_source=tag-newest)
