@@ -61,3 +61,11 @@ app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到
 
 2，缓存处理
 参考地址[okhttp 缓存实践](https://www.jianshu.com/p/4550f14338db)
+
+## 10、MVVM相关知识
+1，mvvm的基础知识
+参考地址[MVVM架构篇之DataBinding(-)](https://juejin.im/post/5beef45be51d450cb4185319)
+
+实践参考地址：[如何构建Android MVVM 应用框架](https://tech.meituan.com/2016/11/11/android-mvvm.html)
+2，databinding的使用
+参考地址：[DataBinding 从入门到进阶](https://juejin.im/post/5b02cf8c6fb9a07aa632146d)
