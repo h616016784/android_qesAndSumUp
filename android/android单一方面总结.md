@@ -67,8 +67,16 @@ app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到
 
 参考地址[MVVM架构篇之DataBinding(-)](https://juejin.im/post/5beef45be51d450cb4185319)
 
-实践参考地址：[如何构建Android MVVM 应用框架](https://tech.meituan.com/2016/11/11/android-mvvm.html)
-
 2，databinding的使用
 
 参考地址：[DataBinding 从入门到进阶](https://juejin.im/post/5b02cf8c6fb9a07aa632146d)
+
+3，项目使用体会
+
+参考地址[关于Android MvvM的一些体会](https://blog.csdn.net/zly921112/article/details/82849549)
+
+实践参考地址：[如何构建Android MVVM 应用框架](https://tech.meituan.com/2016/11/11/android-mvvm.html)
+
+4,数据库相关的操作
+
+参考地址[Android MVVM——Room实现数据存储底层](https://www.jianshu.com/p/b5a0084798dc)
