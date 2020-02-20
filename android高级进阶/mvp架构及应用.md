@@ -1,6 +1,7 @@
 说明：此为干净的mvp开发架构，初步设想是采用mvp+rxjava+retrofit的组合，并采用项目组件化的方式拆分项目构成
 
-# 准备：常用的第三方组件
+# 准备：
+## 1、常用的第三方组件
 - [gson](https://github.com/google/gson) ：帮助Json和Object转换，这个也常用
 - [leakcanary](https://github.com/square/leakcanary) ：检测应用内存泄漏问题
 - [butterknife](https://github.com/JakeWharton/butterknife) ：帮助Android控件和回调的进行依赖注入，JakeWharton大神的力作
@@ -35,3 +36,6 @@
 - [DragSlopLayout](https://github.com/Rukey7/DragSlopLayout) ：一个辅助开发拖拽功能的库，这是我为了做这个App的某些功能封装的库- -，现在倒也有用在工作的项目上
 - [IjkPlayerView](https://github.com/Rukey7/IjkPlayerView) ：基于ijkplayer开发的播放器，也是为了做这个App的视频播放功能封装的库- -，里面加了弹幕功能，感兴趣可以看下
 - [TagLayout](https://github.com/Rukey7/TagLayout) ：标签库，可做为自定义按钮来使用
+
+## 2、第三方平台总结
+- [Bugly](https://bugly.qq.com/v2/index): 腾讯提供的sdk，对崩溃、anr、卡顿等的统计，很不错
