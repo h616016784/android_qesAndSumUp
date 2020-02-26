@@ -4,6 +4,7 @@
 ## 1、常用的第三方组件
 - [gson](https://github.com/google/gson) ：帮助Json和Object转换，这个也常用
 - [leakcanary](https://github.com/square/leakcanary) ：检测应用内存泄漏问题
+- [Arouter](https://github.com/alibaba/ARouter) ：阿里路由跳转
 - [butterknife](https://github.com/JakeWharton/butterknife) ：帮助Android控件和回调的进行依赖注入，JakeWharton大神的力作
 - [dagger2](https://github.com/google/dagger) ：Android和Java依赖注入库，[中文官网](https://www.jianshu.com/p/dc2bbcd51acb)
 - [rxjava](https://github.com/ReactiveX/RxJava) ：一个实现异步操作的库，现在非常火
