@@ -48,6 +48,8 @@ rxjava的采坑集合参考地址[RxJava 常见误区（一）：过度使用 Su
 
 rxjava的使用场景参考地址[Android RxJava实际应用案例讲解：使用RxJava的最佳开发场景](https://blog.csdn.net/carson_ho/article/details/79168723)
 
+rxjava的使用场景2（常见应用）
+  - mock数据的应用
 ## 七、APP的缓存策略
 
 app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到底应该存在哪？](https://blog.csdn.net/shakespeare001/article/details/50546809)
