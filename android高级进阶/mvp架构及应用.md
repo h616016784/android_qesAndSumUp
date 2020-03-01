@@ -12,6 +12,8 @@
 - [RxBinding](https://github.com/JakeWharton/RxBinding) ：配合Rxjava处理控件异步调用
 - [RxLifecycle](https://github.com/trello/RxLifecycle) ：防止RxJava中subscription导致内存泄漏
 - [RxPermissions](https://github.com/tbruyelle/RxPermissions) ：基于RxJava开发的用于帮助在Android 6.0中处理运行时权限检测
+  或者另外一个框架
+  [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher)
 - [retrofit](https://github.com/square/retrofit) ：目前最好用的网络通讯库，应该都用过吧
 - [okhttp](https://github.com/square/okhttp) ：okhttp和retrofit做网络通讯是绝配
 - [greenDAO](https://github.com/greenrobot/greenDAO) ：ORM数据库，能配合rxjava使用
