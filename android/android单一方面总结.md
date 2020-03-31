@@ -86,3 +86,6 @@ app文件缓存文件基础知识[【Android开发经验】APP的缓存文件到
 5，android的jetpack方案及其实力应用
 
 参考地址[MVVM架构示例，可以利用Lifecycle+Retrofit+Room快速搭建项目](https://www.ctolib.com/CankingApp-mvvmArch.html)
+
+## 十一、Android国际化语言
+参考地址[Android国际化(多语言)实现，支持8.0+](https://www.jianshu.com/p/163db59d0774)
