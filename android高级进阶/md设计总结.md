@@ -10,4 +10,6 @@
   此布局为减少布局嵌套很好用。适合零散的多个控件布局
   
 # 三、android项目md风格开发设计与总结
-
+## 1、简单搭建md项目
+  具体详情不在这里写了，参考地址[官网md的开始](https://material.io/develop/android/docs/getting-started/)
+## 2、
