@@ -12,4 +12,7 @@
 # 三、android项目md风格开发设计与总结
 ## 1、简单搭建md项目
   具体详情不在这里写了，参考地址[官网md的开始](https://material.io/develop/android/docs/getting-started/)
-## 2、
+  
+  如果是在androidx基础上才能使用，如果不是的话只能一步步来了
+## 2、md风格基础风格的搭建
+ md的主要由UI regions, surfaces, 和components（基础是layout，color，shape等）
