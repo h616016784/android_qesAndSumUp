@@ -21,5 +21,10 @@
  
  还有[md官网的自定义主题风格](https://material.io/design/material-theming/implementing-your-theme.html#)
  
+ 主题风格由color，Typography，Shape，Icons的基本样式构成。
+ 
+ color由12种颜色样式基本确定：1. Primary 2. Primary Variant 3. Secondary 4. Secondary Variant 5. Background 6. Surface 7. Error 8. On Primary 9. On Secondary 10. On Background 11. On Surface 12. On Error
+ Typography由13种样式基本确定，由family, font, case, size, and tracking构成：具体得有6种headLine、2种subtitle、2种body、一个button、一个caption、一个overline，利用android得样式化固定到项目种。
+ 
  
  
