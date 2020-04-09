@@ -16,3 +16,10 @@
   如果是在androidx基础上才能使用，如果不是的话只能一步步来了
 ## 2、md风格基础风格的搭建
  md的主要由UI regions, surfaces, 和components（基础是layout，color，shape等）
+ ### a、主题风格的搭建
+ 主要参考[goole自定义风格示例](https://github.com/material-components/material-components-android-examples/tree/develop/MaterialThemeBuilder)
+ 
+ 还有[md官网的自定义主题风格](https://material.io/design/material-theming/implementing-your-theme.html#)
+ 
+ 
+ 
