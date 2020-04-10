@@ -37,7 +37,7 @@
   - 设计灵活的布局,如果您需要重新排列布局以适应某种语言（例如单词较长的德语），您可以针对该语言创建备用布局（例如 res/layout-de/main.xml）。不过，这样做会增加应用的维护难度。最好是创建一个更灵活的布局。
   
   ### 3、国际化的支持
-  对 Unicode 和国际化支持的讨论分为两个部分：首先是 Android 6.0（API 级别 23）及更低版本，然后是 Android 7.0（API 级别 24）及更高版本。
+  对 Unicode 和国际化支持的讨论分为两个部分：首先是 Android 6.0（API 级别 23）及更低版本，然后是 Android 7.0（API 级别 24）及更高版本。7.0以上支持同时设置多种语言
   ## 2、区域语言的解决方案
   在 Android 7.0 之前，Android 并非始终能成功匹配应用和系统语言区域。
   - 可以是用Translations Editor来辅助开发，具体参考[Translations Editor](https://developer.android.com/studio/write/translations-editor?hl=zh-cn)
