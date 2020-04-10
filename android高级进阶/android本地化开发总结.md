@@ -42,4 +42,14 @@
   在 Android 7.0 之前，Android 并非始终能成功匹配应用和系统语言区域。
   - 可以是用Translations Editor来辅助开发，具体参考[Translations Editor](https://developer.android.com/studio/write/translations-editor?hl=zh-cn)
   具体的操作步骤可参考地址：[支持不同的语言和文化](https://developer.android.com/training/basics/supporting-devices/languages?hl=zh-cn#java)
+  - 也可以通过android studio的插件来辅助开发 [Android-国际化(多语言)切换详解及实例](https://segmentfault.com/a/1190000011583713)
+  
+  # 二、具体的解决思路与开发过程中遇到的困难
+  ## 1、思路
+    - 可以随着系统切换语言而切换语言，不支持的语言显示默认
+    - 用户可以选择语言，且不会随着系统切换语言或者应用重启而还原
+    
+    具体可参考[Android国际化(多语言)实现，支持8.0](https://juejin.im/post/5ac8d62c518825557e78a514)
+    
+    和[Android国际化之多语言(配置及应用内设置)](https://juejin.im/post/5d3c13976fb9a07ee30e60fd)
   
