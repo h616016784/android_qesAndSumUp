@@ -23,8 +23,19 @@
  
  主题风格由color，Typography，Shape，Icons的基本样式构成。
  
- color由12种颜色样式基本确定：1. Primary 2. Primary Variant 3. Secondary 4. Secondary Variant 5. Background 6. Surface 7. Error 8. On Primary 9. On Secondary 10. On Background 11. On Surface 12. On Error
- Typography由13种样式基本确定，由family, font, case, size, and tracking构成：具体得有6种headLine、2种subtitle、2种body、一个button、一个caption、一个overline，利用android得样式化固定到项目种。
+ - color
+ 由12种颜色样式基本确定：1. Primary 2. Primary Variant 3. Secondary 4. Secondary Variant 5. Background 6. Surface 7. Error 8. On Primary 9. On Secondary 10. On Background 11. On Surface 12. On Error
  
+ - Typography
+ 由13种样式基本确定，由family, font, case, size, and tracking构成：具体得有6种headLine、2种subtitle、2种body、一个button、一个caption、一个overline，利用android得样式化固定到项目种。
  
+ - Shape
+ 由Rounded shapes:分为1. Rounded (0dp), 2. Rounded (4dp), 3. Rounded (16dp), 4. Rounded (24dp)
+                  高度通常为 36dp和64dp.
+                  
+     cards, menus, snackbars, tooltips, dialogs, and buttons通常都是4dp，
+ 和Cut shapes ：分为1. Cut (0dp), 2. Cut (2dp), 3. Cut (8dp), 3. Cut (12dp)
+                高度通常为 36dp和64dp.
+  - Icons
+  由1. Filled, 2. Sharp, 3. Rounded, 4. Outlined, 5. Two-Tone 五种图形基本构成
  
