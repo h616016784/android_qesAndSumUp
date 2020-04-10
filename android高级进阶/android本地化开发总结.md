@@ -52,4 +52,6 @@
     具体可参考[Android国际化(多语言)实现，支持8.0](https://juejin.im/post/5ac8d62c518825557e78a514)
     
     和[Android国际化之多语言(配置及应用内设置)](https://juejin.im/post/5d3c13976fb9a07ee30e60fd)
-  
+  ## 2、遇到的困难
+  ### 1、适配问题
+    参考地址[api的不同](https://www.itcodemonkey.com/article/12098.html)
