@@ -6,3 +6,5 @@
  [Android热修系列三](https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&mid=400118620&idx=1&sn=b4fdd5055731290eef12ad0d17f39d4a)
 
 也可以参考美团的[Android热更新方案Robust](https://tech.meituan.com/2016/09/14/android-robust.html)
+
+[字节码插桩](https://mp.weixin.qq.com/s/3ZRCnK5AJL391rPMTkPmww)
