@@ -53,9 +53,13 @@
 上面是主流的解决方法，个人推荐的使用优先级为 3 > 2 > 1。
 
 当把个模块分开以后，每个人就可以单独分组对应的模块就行了，不过会有资源冲突问题，个人建议是对各个模块的资源名字添加前缀，比如user模块中的登录界面布局为activity_login.xml，那么可以写成这样us_activity_login.xml。这样就可以避免资源冲突问题。同时Gradle也提供的一个字段resourcePrefix，确保各个资源名字正确，具体用法可以参考官方文档。
-### b、
+### b、Application、全局Context、 Activity管理问题
+在功能组件即Demo中的common_base封装BaseApplication，在BaseApplication对第三方库初始化、全局Context的获取等操作。在BaseActivity中对Activity进行添加和移除的管理.
 
+参考地址[组建化项目实践](https://mp.weixin.qq.com/s/8_8gGpkpO2QFNkWgSRBwIg)
+### c、Application、全局Context、 Activity管理问题
 # 四、项目中组件化开发的管理小技巧
 ## 1、基于第一种方案的小技巧
  ### a、android studio统一管理版本号
  参考地址[Android Studio Gradle 版本统一管理](https://www.jianshu.com/p/63e08c6eb1c6)
+ ### b、项目分包 multiDexEnabled true
