@@ -63,3 +63,7 @@
  ### a、android studio统一管理版本号
  参考地址[Android Studio Gradle 版本统一管理](https://www.jianshu.com/p/63e08c6eb1c6)
  ### b、项目分包 multiDexEnabled true
+ ### c、AndroidManifest的管理
+ 我们知道APP在打包的时候最后会把所有的AndroidManifest进行合并，所以每个业务组件的Activity只需要在各自模块的AndroidManifest中注册即可。如果业务组件需要独立运行，则需要单独配置一份AndroidManifest，在gradle的sourceSets根据不同的模式加载不同的AndroidManifest文件。
+ 
+ 参考地址[组建化项目实践](https://mp.weixin.qq.com/s/8_8gGpkpO2QFNkWgSRBwIg)
