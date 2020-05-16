@@ -70,6 +70,7 @@ EventBus： 我们非常熟悉的事件总线型的通信框架，非常灵活�
 参考地址[关于Android模块化我有一些话不知当讲不当讲](https://www.cnblogs.com/chenergougou/p/6892764.html)
 
 微信的api方案暂时不太理解，可参考[Android项目模块化/组件化开发（非原创）](https://www.cnblogs.com/WUXIAOCHANG/p/11015391.html)
+### d、组建的生命周期
 
 # 四、项目中组件化开发的管理小技巧
 ## 1、基于第一种方案的小技巧
