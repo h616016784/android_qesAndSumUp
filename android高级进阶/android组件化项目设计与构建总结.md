@@ -97,3 +97,5 @@ EventBus： 我们非常熟悉的事件总线型的通信框架，非常灵活�
 ## 1、android P网络请求，遇到security policy
 在Android P系统的设备上，如果应用使用的是非加密的明文流量的http网络请求，则会导致该应用无法进行网络请求，https则不会受影响，同样地，如果应用嵌套了webview，webview也只能使用https请求。
 解决方案参考[Android P(9.0) 中 not permitted by network security policy](https://github.com/wenhelinlu/spark/wiki/Android-P(9.0)-%E4%B8%ADOKHttp3%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%87%BA%E7%8E%B0java.net.UnknownServiceException:-CLEARTEXT-communication-**-not-permitted-by-network-security-policy-%E5%BC%82%E5%B8%B8%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95)
+## 2、android 7.0以上增加了fileProvider
+在andriod7.0以上权限限制更加高，像代码调用安装apk要进行适配，在application中添加xml路径，并在xml文件中添加xml文件，具体可参考度娘
