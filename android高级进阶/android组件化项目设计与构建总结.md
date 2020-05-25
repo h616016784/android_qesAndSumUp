@@ -101,3 +101,6 @@ EventBus： 我们非常熟悉的事件总线型的通信框架，非常灵活�
 在andriod7.0以上权限限制更加高，像代码调用安装apk要进行适配，在application中添加xml路径，并在xml文件中添加xml文件，具体可参考度娘
 ## 3、android p的读写权限
 要在application标签中 添加android:requestLegacyExternalStorage="true"
+## 4、检测是否开启状态栏权限
+在android8.0以后方法有区别，并且小米魅族等手机也不同，所以跳转到系统设置界面
+具体参考[Android:检查通知权限并跳转到通知设置界面](https://www.jianshu.com/p/1e27efb1dcac)
