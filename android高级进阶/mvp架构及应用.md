@@ -42,3 +42,6 @@
 
 ## 2、第三方平台总结
 - [Bugly](https://bugly.qq.com/v2/index): 腾讯提供的sdk，对崩溃、anr、卡顿等的统计，很不错
+
+## 3、android各平台上线总结
+- 参考地址[Android各平台上线总结](https://www.jianshu.com/p/59a0add8b80c)
