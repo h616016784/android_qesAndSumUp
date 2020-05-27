@@ -104,3 +104,5 @@ EventBus： 我们非常熟悉的事件总线型的通信框架，非常灵活�
 ## 4、检测是否开启状态栏权限
 在android8.0以后方法有区别，并且小米魅族等手机也不同，所以跳转到系统设置界面
 具体参考[Android:检查通知权限并跳转到通知设置界面](https://www.jianshu.com/p/1e27efb1dcac)
+## 5、检测是否开启通知栏
+具体参考[Android:检查通知权限并跳转到通知设置界面](https://www.jianshu.com/p/1e27efb1dcac)
