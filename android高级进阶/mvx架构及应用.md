@@ -47,4 +47,5 @@
 - 参考地址[Android各平台上线总结](https://www.jianshu.com/p/59a0add8b80c)
 ## 4、网络请求封装
 - 参考地址[急速开发系列——Retrofit实战技巧](https://www.jianshu.com/p/0f97f94b171f)，这个主要讲retrofit的基本使用，以及重点讲述retrofit的拦截器是在一些应用场景的使用。
-- 参考地址[okhttp拦截器Interceptor详解](https://www.jianshu.com/p/8522bc275390)，这个大概说了一下retrofit里的拦截器种类和大概流程。
+- 参考地址[网络请求框架OkHttp3全解系列 - （三）拦截器详解1：重试重定向、桥、缓存（重点](https://cloud.tencent.com/developer/article/1667342)，这个大概说了一下retrofit里的拦截器种类和大概流程。
+- 参考地址[应用拦截器和网络拦截器的区别](https://www.jianshu.com/p/2734d0c0e88c),这个主要说okhttp的过滤器的区别
