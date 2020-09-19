@@ -45,3 +45,8 @@
 
 ## 3、android各平台上线总结
 - 参考地址[Android各平台上线总结](https://www.jianshu.com/p/59a0add8b80c)
+## 4、网络请求封装
+- 参考地址[急速开发系列——Retrofit实战技巧](https://www.jianshu.com/p/0f97f94b171f)，这个主要讲retrofit的基本使用，以及重点讲述retrofit的拦截器是在一些应用场景的使用。
+
+- [ShineButton](https://github.com/ChadCSong/ShineButton) ：炫酷效果的点击按钮，主要用于显示收藏之类的动画ret
+- [ShineButton](https://github.com/ChadCSong/ShineButton) ：炫酷效果的点击按钮，主要用于显示收藏之类的动画
