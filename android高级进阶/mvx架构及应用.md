@@ -51,7 +51,5 @@
 - 参考地址[应用拦截器和网络拦截器的区别](https://www.jianshu.com/p/2734d0c0e88c),这个主要说okhttp的过滤器的区别
 
 现在通常retrofit都和rxjava联合使用：
-- 参考地址[RxJava这么好用却容易内存泄漏？解决办法是...](https://cloud.tencent.com/developer/article/1457457),使用rxjava解决内存泄漏的方法
-
-- [AndroidImageSlider](https://github.com/daimajia/AndroidImageSlider) ：展示头部Banner的库，动画效果很多，就是需要依赖picasso和nineoldandroids这两个库di zhi
-- [AndroidImageSlider](https://github.com/daimajia/AndroidImageSlider) ：展示头部Banner的库，动画效果很多，就是需要依赖picasso和nineoldandroids这两个库
+- 参考地址[RxJava这么好用却容易内存泄漏？解决办法是...](https://cloud.tencent.com/developer/article/1457457),使用rxjava解决内存泄漏的方法，也
+可以参考google提供的livedata作为事件总线来解决。
