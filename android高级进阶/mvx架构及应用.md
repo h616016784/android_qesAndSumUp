@@ -53,3 +53,6 @@
 现在通常retrofit都和rxjava联合使用：
 - 参考地址[RxJava这么好用却容易内存泄漏？解决办法是...](https://cloud.tencent.com/developer/article/1457457),使用rxjava解决内存泄漏的方法，也
 可以参考google提供的livedata作为事件总线来解决。
+
+android的网络请求功能可参考google的repository设计模式：
+- 参考地址[Repository设计分析](https://juejin.im/post/6844903605766455310),简单的设置repository模式的原理和方法。
