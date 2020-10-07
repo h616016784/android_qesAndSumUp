@@ -102,5 +102,6 @@ android混合开发
  参考 <https://kangzubin.com/2018-mobile-end-cross-platform-dev/>
  参考地址：[浅谈几种跨平台方案](https://zhuanlan.zhihu.com/p/148820818)
  参考地址：[Hybrid-Native+H5，主流框架深度分析](https://www.jianshu.com/p/cd44823db35f)
+ 关于Cordova的记录：现有android项目集成Cordova项目参考地址：[Android H5混合开发（3）：原生Android项目里嵌入Cordova](https://www.geek-share.com/detail/2781778401.htmlAndroid)
   
   
