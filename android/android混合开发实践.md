@@ -56,6 +56,10 @@ Hybrid App：混合应用程序（混合App）
 - 58同城方案
   参考地址[58商家通Android端WebView加载优化方案](https://www.mdeditor.tw/pl/pAC5)
   
+对于h5优化秒开的方案思路有很多，参考地址[转载自AlloyTeam](http://www.alloyteam.com/2019/10/h5-performance-optimize/)
+
+以上的方案或多或少的都有一些侵入性，其实我们最想要的是干净的侵入少的带有离线包的方案，对于离线包的理解可以参考
+  
 
   
   
