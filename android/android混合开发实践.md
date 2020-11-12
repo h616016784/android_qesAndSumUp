@@ -44,6 +44,20 @@ Hybrid App：混合应用程序（混合App）
   原理和使用案例和参考地址[Nebula 来了，支付宝 App 跨平台动态化框架](https://www.mdeditor.tw/pl/27nt)和
   [阿里巴巴技术文章分享：极致的 Hybrid：航旅离线包再加速！](https://www.open-open.com/news/view/1cee25c)
   
+- 今日头条优化方案
+  参考地址[Android H5秒开方案调研—今日头条H5秒开方案详解](https://yuweiguocn.github.io/android-h5/)
+  
+- 百度优化方案
+  参考地址[百度APP-Android H5首屏优化实践](https://mp.weixin.qq.com/s/AqQgDB-0dUp2ScLkqxbLZg)
+  
+- 网易优化方案
+  参考地址[网易新闻客户端H5秒开优化](https://dy.163.com/article/F0RO3P1005376OPS.html)
+  
+- 58同城方案
+  参考地址[58商家通Android端WebView加载优化方案](https://www.mdeditor.tw/pl/pAC5)
+  
+
+  
   
 
 
