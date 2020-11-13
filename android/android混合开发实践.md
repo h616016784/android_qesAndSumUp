@@ -23,6 +23,11 @@ Hybrid App：混合应用程序（混合App）
 3、自绘U+原生( QT Mobile、 Flutter)。
 
 ## 三、混合开发的选择
+
+混合开发的方式的技术方法参考地址：[混合开发-最全常用的混合开发App方式总结](https://www.jianshu.com/p/09b00ebf5e15);
+
+[混合开发 框架对比](https://www.jianshu.com/p/8e99b4aed464)
+
 ### 1、H5（webview或网络框架）+原生。
   承相对简单，但对于复杂的界面效果不友好，尤其在弱网下，所以各大厂也推出了相应的优化方案；
   
@@ -58,7 +63,17 @@ Hybrid App：混合应用程序（混合App）
   
 对于h5优化秒开的方案思路有很多，参考地址[转载自AlloyTeam](http://www.alloyteam.com/2019/10/h5-performance-optimize/)
 
-以上的方案或多或少的都有一些侵入性，其实我们最想要的是干净的侵入少的带有离线包的方案，对于离线包的理解可以参考
+以上的方案或多或少的都有一些侵入性，其实我们最想要的是干净的侵入少的带有离线包的方案，对于离线包的理解可以参考。
+
+对于离线包的实现可参考一下地址
+
+[web离线技术原理](https://www.jianshu.com/p/efb4f93b10de);
+
+[前端遇上Go: 静态资源增量更新的新实践](https://zhuanlan.zhihu.com/p/39145666);
+
+[hybrid in webview](https://myslide.cn/slides/17104)
+
+
   
 
   
