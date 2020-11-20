@@ -6,3 +6,14 @@
   这个标准是google提出的规范用户设计的，但很多设计并没有遵循，也很少遵循
 
 参考地址[电视应用质量](https://developer.android.google.cn/docs/quality-guidelines/tv-app-quality)里面的视觉设计和用户交互准则。
+
+### 2、Android设计指南
+  可以参考google的设计原则，但是你懂得。。。。
+  
+  参考地址[ Android TV 设计指南](https://designguidelines.withgoogle.com/android-tv/tv-apps/app-structure.html)
+##### A、设计原则：
+  - 创造性的想象力（Creative vision）
+    Big and beautiful content is the center of the TV interface. Content appears cinematic, with elegant transitions, and minimal text. The TV screen favors low-density, curated, actionable content, and categories.（大而漂亮的内容是电视界面的中心。内容看起来像电影，有优雅的过渡和最小的文本。电视屏幕更倾向于低密度、精心策划、可操作的内容和分类）
+    
+    提炼：大而美、过渡优雅、低密度、精心策划、可操作的内容和分类。
+  - 
