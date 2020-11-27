@@ -63,6 +63,15 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
   由于看电视的距离，用户在电视上处理的信息可能不如在电脑或移动设备上处理的那么多。限制电视屏幕上的文字和阅读量。
   
 ##### C、系统的概述：
+  - Navigation
+  
+  操作Android电视应该很容易。为安卓电视设计应用程序需要重新考虑用户输入方式，因为用户使用遥控器而不是触摸屏来浏览应用程序。
+  
+  Controllers（控制器）：Android电视控制器可以多种多样，许多控制器包括方向键(D-pad)、选择键、播放/暂停键、返回键和麦克风键。
+  
+  Focus（焦点）：总是有一个焦点。文本、按钮、卡片和其他一些元素可以被聚焦。清楚地指示哪个控件处于焦点或被选中。
+  
+  Structure（）：路径---用户应该能够以清晰的方向导航你的UI。如果没有到达控件的直接路径，可以考虑重新定位它；轴---设计你的布局，让它利用水平和垂直轴。给每个方向一个特定的功能，使其快速导航大层次结构。
 ##### D、TV apps的设计：
   Android电视应用程序的结构一般有以下四种:
  - Browse View（浏览视图）
@@ -96,3 +105,30 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
  要进行搜索，请选择屏幕上的搜索按钮或按下控制器上的mic按钮。
  
  See [In-app Search](https://designguidelines.withgoogle.com/android-tv/tv-apps/in-app-search.html) for more details.
+ 
+##### E、Style的设计：
+
+  - Color
+  
+  Testing colors：跨设备测试颜色。电视上的颜色看起来可能与电脑或移动设备上的颜色非常不同，有些颜色的组合可能不能同时在两者上工作。为了确保你的应用程序的颜色适用于电视，在多种设备和环境中测试你的设计。也测试图像质量使用电视的显示设置(如黑白，信箱等)。推荐使用比移动设备颜色深两到三个层次的颜色。或者，使用调色板中700-900范围的颜色。
+  
+  TV White：纯白色(#FFFFFF)在明亮的电视屏幕上很刺眼。浅灰色(#EEEEEE)推荐作为深色背景的默认文本颜色。
+  
+  - Typography（排版）
+  
+  Style：以下字体样式和大小通常在电视用户界面中使用.
+
+      Content title:Light 34sp   Content title:Light 24sp   Browse lane title:Condensed 20sp    Subhead Regular:16sp   Button Label Condensed: 16sp
+
+      Body Regular:14sp    List item/card primary text:Condensed Regular 14sp    Secondary text:Condensed Regular: 12sp
+  
+  Dynamic font size（动态字体大小）： 内容标题的文本长度可以从短到长。考虑使用动态类型根据可用空间和估计的字母大小来改变文本大小。
+  
+  Condensed fonts（浓缩的字体）：对于英语和类似英语的脚本，使用压缩字体来有效地容纳有限空间的文本。
+  
+  - Branding（品牌）
+  
+  在安卓电视上有多种方式来表达你的品牌。应用程序可以在整个UI中使用一致的配色方案，例如推荐卡的重音着色、浏览通道和传输控件。应用程序中的背景图像也是一种身临其境的方式来表达你的品牌。
+
+  
+  
