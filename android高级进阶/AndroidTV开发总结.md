@@ -130,5 +130,6 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
   
   在安卓电视上有多种方式来表达你的品牌。应用程序可以在整个UI中使用一致的配色方案，例如推荐卡的重音着色、浏览通道和传输控件。应用程序中的背景图像也是一种身临其境的方式来表达你的品牌。
 
+  ## 二、TV应用的构建
   
   
