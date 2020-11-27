@@ -131,5 +131,43 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
   在安卓电视上有多种方式来表达你的品牌。应用程序可以在整个UI中使用一致的配色方案，例如推荐卡的重音着色、浏览通道和传输控件。应用程序中的背景图像也是一种身临其境的方式来表达你的品牌。
 
   ## 二、TV应用的构建
+  注意：TV 应用在 TV 设备上本地运行。如需进一步了解如何将视频和音频从 Android 应用流式传输到 TV 设备，请参阅 Google Cast 开发者文档。
   
+  ### 1、TV 应用使用入门
+    TV 应用使用的结构与手机和平板电脑应用相同。这种相似性意味着，您可以将现有应用改造成在 TV 设备上也能运行，也可以运用您已有的 Android 应用构建知识打造新应用。
+    
+    主要参考[TV 应用使用入门](https://developer.android.com/training/tv/start/start)
   
+  #### A、确定媒体格式支持
+  
+    如需了解 Android TV 支持的编解码器、协议和格式，请参阅以下文档。
+
+   - [支持的媒体格式](https://developer.android.com/guide/topics/media/media-formats)
+   - DRM
+   - android.drm
+   - ExoPlayer
+   - android.media.MediaPlayer
+   
+ #### B、设置 TV 项目
+ 注意：我们建议您让一个应用同时支持移动设备和 TV 设备。如果您需要为移动设备和 TV 设备分别构建单独的应用，那么可以使用多 APK 支持在 Google Play 上的同一商品详情下发布多个应用
+ 下面是创建在 TV 设备上运行的应用时应使用的主要组件：
+
+    TV Activity（必需）- 在您的应用清单中，声明想要在 TV 设备上运行的 Activity。
+    TV 库（可选）- 有几个可用于 TV 设备的 androidx 库，它们提供了用于构建界面的微件。
+  - 前提条件：
+    将您的 SDK 工具更新为 24.0.0 或更高版本。
+
+    将您的 SDK 平台更新为 Android 5.0 (API 21) 或更高版本。
+
+    创建或更新您的应用项目
+  
+  - 声明 TV Activity
+  
+  - 声明 Leanback 支持
+  
+  - 将触摸屏声明为非必备条件
+  
+  - 提供主屏幕横幅
+  
+  - 更改启动器颜色
+ 
