@@ -37,4 +37,27 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
  
  TV is embedded in social experiences, like watching movies, looking at photos, or playing games. This makes a TV an inherently shared device. Because anyone in a trusted household might have access to it, app content should be appropriate for mixed audiences.（电视根植于社会体验中，比如看电影、看照片或玩游戏。这使得电视成为一种固有的共享设备。因为一个受信任的家庭中的任何人都可以访问它，应用程序内容应该适合混合受众。）
 
+##### B、TV的设计：
+ - TV appropriate apps（电视适当的应用程序）
+ 
+ 最适合电视的应用程序提供沉浸式的娱乐体验。提供学习、游戏、交流和内容消费的应用程序都是很好的例子，但这并不是一个全面的列表。
+ 
+ 电视应用程序应该:                               电视应用程序不应该:
 
+    涉及简单的设置                                  是文字
+
+    利用有限的屏幕                                  强调管理任务
+
+    分享社会背景
+
+    把一些关键的事情做得很好
+  
+  - 简单的导航
+
+  电视应该提供最短的内容路径。
+
+  在观众和内容之间放置尽可能少的屏幕。当屏幕是必要的，他们是一致的和简单的操作输入设备。
+  
+  - 信息密度
+  
+  由于看电视的距离，用户在电视上处理的信息可能不如在电脑或移动设备上处理的那么多。限制电视屏幕上的文字和阅读量。
