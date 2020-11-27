@@ -216,6 +216,9 @@ TV 设备为应用提供了一组有限的导航控件。能否为您的 TV 应�
   主要参考[创建 TV 导航](https://developer.android.com/training/tv/start/navigation)
   
  ### 8、谷歌TV上的最佳实践
+ 
+  主要参考[谷歌TV上的最佳实践](https://developer.android.com/training/tv/start/google-tv)
  #### A、Baseline requirements（基线需求）
-
+ 
+ ## 三、构建 TV 播放应用
   
