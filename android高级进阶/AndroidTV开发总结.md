@@ -37,7 +37,7 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
  
  TV is embedded in social experiences, like watching movies, looking at photos, or playing games. This makes a TV an inherently shared device. Because anyone in a trusted household might have access to it, app content should be appropriate for mixed audiences.（电视根植于社会体验中，比如看电影、看照片或玩游戏。这使得电视成为一种固有的共享设备。因为一个受信任的家庭中的任何人都可以访问它，应用程序内容应该适合混合受众。）
 
-##### B、TV的设计：
+##### B、TV的设计：（实际是设计原则里面的）
  - TV appropriate apps（电视适当的应用程序）
  
  最适合电视的应用程序提供沉浸式的娱乐体验。提供学习、游戏、交流和内容消费的应用程序都是很好的例子，但这并不是一个全面的列表。
@@ -61,3 +61,38 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
   - 信息密度
   
   由于看电视的距离，用户在电视上处理的信息可能不如在电脑或移动设备上处理的那么多。限制电视屏幕上的文字和阅读量。
+  
+##### C、系统的概述：
+##### D、TV apps的设计：
+  Android电视应用程序的结构一般有以下四种:
+ - Browse View（浏览视图）
+ 
+  浏览视图通常是Android TV应用程序的入口点。
+
+  通过使用相关类别简化决策，使用户可以轻松浏览内容矩阵
+  
+  See [Browse View](https://designguidelines.withgoogle.com/android-tv/tv-apps/browse-view.html#browse-view-browse-lane) for more details.
+
+ - Detail View（详细信息视图）
+ 
+ Detail视图为所选内容提供深入的相关信息。
+
+ 将可操作的内容和最相关的信息放在屏幕最直接可见的部分，而不需要用户滚动屏幕。
+ 
+ See [Detail View](https://designguidelines.withgoogle.com/android-tv/tv-apps/detail-view.html) for more details.
+ 
+ - Consumption View(消费的观点)
+ 
+ 消费视图是供用户参与或观看内容的。
+
+ 提供控制和上下文信息来增强体验
+ 
+ See [Consumption View](https://designguidelines.withgoogle.com/android-tv/tv-apps/consumption-view.html#) for more details.
+ 
+ - In-app Search(应用内搜索)
+ 
+ 应用内搜索覆盖提供了一种快速的方法来搜索应用内的内容。
+
+ 要进行搜索，请选择屏幕上的搜索按钮或按下控制器上的mic按钮。
+ 
+ See [In-app Search](https://designguidelines.withgoogle.com/android-tv/tv-apps/in-app-search.html) for more details.
