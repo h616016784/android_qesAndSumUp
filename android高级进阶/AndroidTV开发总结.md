@@ -170,4 +170,52 @@ We celebrate cinematic motions that are amplified on the large screen. During tr
   - 提供主屏幕横幅
   
   - 更改启动器颜色
+  
+  #### C、添加 TV 库
+  Jetpack 包含用于 TV 应用的 androidx 软件包库。这些库为 TV 设备提供了 API 和界面微件。
+  
+  #### D、运行 TV 应用
+  
+  运行您的应用是开发过程的一个重要环节。您可以在配置为支持 USB 调试的 TV 设备上运行您的应用，也可以使用虚拟 TV 设备运行您的应用
+  
+  - 在真实设备上运行
+  
+  - 在虚拟设备上运行
+  
+  ### 2、AndroidX TV libraries
+  
+  主要是Leanback,主要使用参考[AndroidX TV libraries](https://developer.android.com/training/tv/start/libraries)
+  
+  ### 3、处理 TV 硬件
+  
+  TV 硬件与其他 Android 设备截然不同。TV 不提供其他 Android 设备上提供的一些硬件功能，如触摸屏、相机和 GPS 接收器。此外，TV 还完全依赖于辅助硬件设备。用户必须使用遥控器或游戏手柄才能与 TV 应用进行交互。构建 TV 应用时，您必须仔细考虑在 TV 硬件上运行应用的硬件限制和要求。
+  
+  主要参考[处理 TV 硬件](https://developer.android.com/training/tv/start/hardware)
+  
+  ### 4、管理 TV 控制器
+  
+  TV 设备需要通过基本遥控器或游戏控制器形式的辅助硬件设备与应用进行交互。这意味着您的应用必须支持方向键输入。此外，这还意味着您的应用可能需要处理离线控制器以及来自多种控制器的输入
+  
+  主要参考[管理 TV 控制器](https://developer.android.com/training/tv/start/controllers)
  
+ ### 5、构建 TV 布局
+ 
+ TV 屏幕的通常观看距离约为 10 英尺，尽管其尺寸比大多数其他 Android 设备的显示屏大得多，但这种屏幕不能提供与小型设备相同程度的精确细节和色彩表现。鉴于这些因素，您在设计应用布局时必须谨记它是用于 TV 设备这一点，才能创造出实用并且令人愉悦的用户体验。
+ 
+  主要参考[构建 TV 布局](https://developer.android.com/training/tv/start/layouts)
+  
+ ### 6、屏幕键盘
+ 
+ 可用系统键盘或者自己写键盘
+
+  主要参考[屏幕键盘](https://developer.android.com/training/tv/start/onscreen-keyboard)
+  
+ ### 7、创建 TV 导航
+TV 设备为应用提供了一组有限的导航控件。能否为您的 TV 应用创建有效的导航架构取决于对这些有限控件的了解，以及用户在操作您的应用时的感知极限。在构建 Android TV 应用时，请特别注意用户实际如何使用遥控器按钮（而非触摸屏）在您的应用内导航。
+
+  主要参考[创建 TV 导航](https://developer.android.com/training/tv/start/navigation)
+  
+ ### 8、谷歌TV上的最佳实践
+ #### A、Baseline requirements（基线需求）
+
+  
