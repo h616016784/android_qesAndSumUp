@@ -129,3 +129,5 @@
 其实标准的制定应该是第一步，要不然优化永无止境。
 
 (Android性能测试关注的指标整理)[https://www.jb51.net/article/172834.htm]
+
+(移动端性能标准值及定义整理)[http://120.221.160.5:9002/lrhealth_dicomh5/#/?studyid=2751060106853687296&accessToken=D7567D58FC584E7BB23A229218EBF14B&tenantKey=2715972430958149632]
