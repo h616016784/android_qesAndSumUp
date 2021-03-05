@@ -40,11 +40,25 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 （优秀：0～300ms,标准：300ms～400ms，轻微隐患：400ms～1000ms，严重隐患：1000ms以上）电话短信干扰、低电量提醒、push提醒、usb数据线插拔提醒、充电提醒
 
  - UI 绘制与刷新
+   也可具体操作也可以参考[Android App性能评测分析－流畅度篇](https://www.jianshu.com/p/642f47989c7c)
+   
+  ![流畅度度量]( https://github.com/h616016784/android_qesAndSumUp/raw/master/pic/1614916218804.jpg )
    A）、FPS（系统合成帧率）：数据形式最为直观（FPS 是最早的显示性能指标，而且在多个平台中都有着类似的定义），且对系统平台的要求最低（API level 1），游戏、视频等连续绘制的应用可以考虑选用，但不适用于绝大多数非连续绘制的应用；
    计算公式：1000ms / 60 frames ≈ 16.67 ms/frames
    
+   获取方法：
+   GPU呈现模式分析；
+   通过gfxinfo获取，adb shell dumpsys gfxinfo yourpackagename；
+   通过系统层级SurfaceFlinger获取，adb shell dumpsys SurfaceFlinger packagename；
    
+   用途：监控
+   B)、Aggregate Frame Stats（应用跳帧次数、幅度） 方案( Android 6.0, API 23+)
+   
+   基础数据：Frarnelnfo
+   通过以下命令，可以获取每一帧每个关键点的绘制过程中的耗时信息（纳秒时间戳），仅针对应用生成的最后120帧数据。
+   命令：adb shell dumpsys gfxinfo pkg name framestats
 
+    用途：监控、上报
  - 启动 
    安装启动、冷启动、热启动
  - 跳转
@@ -55,7 +69,7 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
    系统事件
    滑动
    
-  具体操作也可以参考[Android App性能评测分析－流畅度篇](https://www.jianshu.com/p/642f47989c7c)
+
 ### 4）网络请求响应时间
 （优秀：0～400ms，标准：400ms～2000ms，轻微隐患：2000ms～5000ms，严重隐患：5000ms以上),应用发出一个HTTP请求到主机，主机端返回响应所用的时间，可分为强网和弱网，强网不做介绍，弱网下，如电梯里、地铁上网络信号差时，app页面一直转圈加载
 
