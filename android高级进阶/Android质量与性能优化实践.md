@@ -41,26 +41,39 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 
  - UI 绘制与刷新
    也可具体操作也可以参考[Android App性能评测分析－流畅度篇](https://www.jianshu.com/p/642f47989c7c)
-   
+   主要是计算出帧率、丢帧率、流畅度，纬度为高、平局、低
   ![流畅度度量]( https://github.com/h616016784/android_qesAndSumUp/raw/master/pic/1614916218804.jpg )
-   A）、FPS（系统合成帧率）：数据形式最为直观（FPS 是最早的显示性能指标，而且在多个平台中都有着类似的定义），且对系统平台的要求最低（API level 1），游戏、视频等连续绘制的应用可以考虑选用，但不适用于绝大多数非连续绘制的应用；
-   计算公式：1000ms / 60 frames ≈ 16.67 ms/frames
+   A）、基于gfxinfo方案
    
-   获取方法：
-   GPU呈现模式分析；
-   通过gfxinfo获取，adb shell dumpsys gfxinfo yourpackagename；
-   通过系统层级SurfaceFlinger获取，adb shell dumpsys SurfaceFlinger packagename；
-   
-   用途：监控
-   B)、Aggregate Frame Stats（应用跳帧次数、幅度） 方案( Android 6.0, API 23+)
-   
-   基础数据：Frarnelnfo
-   通过以下命令，可以获取每一帧每个关键点的绘制过程中的耗时信息（纳秒时间戳），仅针对应用生成的最后120帧数据。
-   命令：adb shell dumpsys gfxinfo pkg name framestats
+      FPS（系统合成帧率）
 
-    用途：监控、上报
- - 启动 
-   安装启动、冷启动、热启动
+         获取方法：
+         GPU呈现模式分析；
+         通过gfxinfo获取，adb shell dumpsys gfxinfo yourpackagename；
+         数据形式最为直观（FPS 是最早的显示性能指标，而且在多个平台中都有着类似的定义），且对系统平台的要求最低（API level 1），游戏、视频等连续绘制的应用可以考虑选用，但不适用于绝大多数非连续绘制的应用；
+         计算公式：1000ms / 60 frames ≈ 16.67 ms/frames
+
+         用途：监控
+
+   B）、基于FrameStats 方案( Android 6.0, API 23+)
+   
+     通过以下命令，可以获取每一帧每个关键点的绘制过程中的耗时信息（纳秒时间戳），仅针对应用生成的最后120帧数据。
+     命令：adb shell dumpsys gfxinfo pkg name framestats
+   C)、基于SurfaceFlinger方案
+   
+         通过系统层级SurfaceFlinger获取，adb shell dumpsys SurfaceFlinger packagename；
+   D）、基于Choreographer的方案（Android 4.1, API 16+）
+   E）、android的block Canary组件
+
+ - 启动 ：安装启动、冷启动、热启动
+   App启动时间的度量方式
+   A）、adb shell 方式。命令为 adb shell am start -W [pkg_name]/[activity]
+   B）、logcat 方式。android4.4之后，Android在系统Log中添加Display的Log信息，可以通过过滤ActivityManager及Display关键字，抓去Log中的启动时间信息。命令为adb logcat｜grep “ActivityManager”。
+   C）、TraceView 工具。我们在 UI 和 CPU 性能优化中介绍了 TraceView，其可以完整地显示每个函数/方法的时间消耗，有两种使用方式。
+
+        直接通过 DDMS 的 starttraceview 启动，弹窗选择 trace 模式开始记录 。
+        代码集成方式，在需要调试的地方加入 Debug.startMethodTracing(”xx”)，在结束的地方加入 Debug.stopMethodTracing()，运行后将生成 XX.trace文件，然后
+        通过 DDMS 打开该 trace 文件即可分析，注意需要” android.permission.WRITE_EXTERNAL STORAGE”权限。
  - 跳转
    页面切换
    前后台切换
