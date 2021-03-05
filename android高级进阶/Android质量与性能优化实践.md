@@ -68,7 +68,9 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
  - 启动 ：安装启动、冷启动、热启动
    App启动时间的度量方式
    A）、adb shell 方式。命令为 adb shell am start -W [pkg_name]/[activity]
+   
    B）、logcat 方式。android4.4之后，Android在系统Log中添加Display的Log信息，可以通过过滤ActivityManager及Display关键字，抓去Log中的启动时间信息。命令为adb logcat｜grep “ActivityManager”。
+   
    C）、TraceView 工具。我们在 UI 和 CPU 性能优化中介绍了 TraceView，其可以完整地显示每个函数/方法的时间消耗，有两种使用方式。
 
         直接通过 DDMS 的 starttraceview 启动，弹窗选择 trace 模式开始记录 。
