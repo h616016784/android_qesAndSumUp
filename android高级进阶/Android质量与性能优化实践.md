@@ -67,6 +67,8 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 
  - 启动 ：安装启动、冷启动、热启动(优秀：1s以内；标准：1s-2s；差：2s之外)
 
+    建议质量标准为 1、快开慢开比；2、90%用户的启动时间
+
     一些额外的学习可参考地址[Android App性能评测分析-启动时间篇](https://www.jianshu.com/p/fe81e4b4c5ba),[如何统计Android App启动时间](https://www.jianshu.com/p/59a2ca7df681)
  
     非常不错，实战性非常好的一篇文章[深入探索Android启动速度优化](https://jsonchao.github.io/2019/11/10/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2Android%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/)
