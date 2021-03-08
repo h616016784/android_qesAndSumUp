@@ -69,6 +69,8 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 
     一些额外的学习可参考地址[Android App性能评测分析-启动时间篇](https://www.jianshu.com/p/fe81e4b4c5ba),[如何统计Android App启动时间](https://www.jianshu.com/p/59a2ca7df681)
  
+    非常不错，实战性非常好的一篇文章[深入探索Android启动速度优化](https://jsonchao.github.io/2019/11/10/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2Android%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/)
+ 
    App启动时间的度量方式
    
    A）、adb shell 方式。命令为 adb shell am start -W [pkg_name]/[activity]
