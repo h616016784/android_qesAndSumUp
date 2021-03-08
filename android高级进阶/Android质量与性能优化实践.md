@@ -65,9 +65,17 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
    D）、基于Choreographer的方案（Android 4.1, API 16+）
    E）、android的block Canary组件
 
- - 启动 ：安装启动、冷启动、热启动
+ - 启动 ：安装启动、冷启动、热启动(优秀：1s以内；标准：1s-2s；差：2s之外)
+
+    一些额外的学习可参考地址[Android App性能评测分析-启动时间篇](https://www.jianshu.com/p/fe81e4b4c5ba),[如何统计Android App启动时间](https://www.jianshu.com/p/59a2ca7df681)
+ 
    App启动时间的度量方式
+   
    A）、adb shell 方式。命令为 adb shell am start -W [pkg_name]/[activity]
+         缺点:
+      应用的启动过程往往不只一个Activity，有可能是先进入一个启动页，然后再从启动页打开真正的首页。某些情况下还有可能中间经过更多的Activity，这个时候需要将多个Activity的时间加起来。
+      将多个Activity启动时间加起来并不完全等于用户感知的启动时间。例如在启动页可能是先等待某些初始化完成或者某些动画播放完毕后再进入首页。使用命令行统计的方式只是计算了Activity的启动以及初始化       时间，并不能体现这种等待任务的时间。
+      没有在AndroidManifest.xml对应的Activity声明中指定<intent-filter>或者属性没有android:exported="true"的Activity不能使用这种命令行的形式计算启动时间
    
    B）、logcat 方式。android4.4之后，Android在系统Log中添加Display的Log信息，可以通过过滤ActivityManager及Display关键字，抓去Log中的启动时间信息。命令为adb logcat｜grep “ActivityManager”。
    
@@ -76,6 +84,9 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
         直接通过 DDMS 的 starttraceview 启动，弹窗选择 trace 模式开始记录 。
         代码集成方式，在需要调试的地方加入 Debug.startMethodTracing(”xx”)，在结束的地方加入 Debug.stopMethodTracing()，运行后将生成 XX.trace文件，然后
         通过 DDMS 打开该 trace 文件即可分析，注意需要” android.permission.WRITE_EXTERNAL STORAGE”权限。
+   D)、线上统计
+   
+       要考虑冷启动、热启动、温启动三种情况下的代码的统计时间 
  - 跳转
    页面切换
    前后台切换
