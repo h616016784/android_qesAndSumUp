@@ -92,7 +92,12 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
    
        要考虑冷启动、热启动、温启动三种情况下的代码的统计时间 
  - 跳转
-   页面切换
+   A）页面切换
+      
+      相关知识可以学习：[Android Activity启动耗时统计方案](https://juejin.cn/post/6844903935627493383#heading-1)
+      
+      页面切换包括 ActiivtyA Pause流程、ActivityB Launch流程、ActivityB Render流程 三个过程
+      
    前后台切换
  - 响应
    按键
