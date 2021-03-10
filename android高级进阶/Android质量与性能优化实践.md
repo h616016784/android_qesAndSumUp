@@ -145,11 +145,16 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
   App包的size应该根据业务的发展而定，项目初期size要小一些，随着业务的发展逐步扩大。
   Google Play 要求用户下载的压缩后 APK 大小不超过 100 MB。使用 Android App Bundle 上传您的应用，这种方式允许的压缩后下载大小上限为 150 MB。
   
-  项目初期的APK大小为（0-50M）项目功能复杂（10多个功能模块）（50M-90M）项目极其复杂的时候（90M以上）
+  项目初期的APK大小为（0-30M，30M-50M）项目功能复杂（10多个功能模块）（50M-90M）项目极其复杂的时候（90M以上）
   
-  开发如何分析：使用Android studio 的APK Analyzer
+  开发如何分析：1）使用Android studio 的APK Analyzer
+              2）使用 ApkTool 反编译工具分析 APK
+              3）使用 nimbledroid 进行 APK 性能分析
+              4）使用 android-classshark 进行 APK 分析
 ### 9）耗电量
-
+  平均标准：
+  无网络待机：<1OmA；WIFI待机
+  
 的app占据第一位，流量跑的离谱，则存在果断卸载的可能
 ### 10）FPS
 FPS大于18帧比率，建议值大于90%
