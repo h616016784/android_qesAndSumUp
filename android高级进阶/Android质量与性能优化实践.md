@@ -177,14 +177,26 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 
 ### 10）FPS
 FPS大于18帧比率，建议值大于90%，具体参考1）步骤
+
+### 12）存储
+  参考地址[Android 优化——存储优化](https://cloud.tencent.com/developer/article/1334637)        
+  [Android存储优化](https://blog.csdn.net/hujin2017/article/details/103385192)
+  - SharePreferences 优化
+  - 数据库优化
 ### 11）cpu使用率
-  建议值>90%，cpu频率设置过高时会导致过热,导致耗电更严重，cpu频率设置过低导致手机滞后，应用处理缓慢同样导致耗电，则优就好，避免被卸掉
-  
+  CPU使用率过高，CPU过于繁忙，会使整个手机无法响应用户，整体性能降低，用户体验就会很差，也容易引起ANR等等一系列问题。 
+  CPU利用率分为用户态、系统态、空闲态，分别表示CPU处于用户态执行的时间，系统内核执行的时间，和空闲系统进程执行的时间。
+
+  平时所说的CPU利用率是指：CPU执行非系统空闲进程的时间 / CPU总的执行时间。
+
   开发如何测量：1）android的profiler
+  
               具体参考[解决CPU使用过高问题](https://www.huaweicloud.com/articles/840b9dbe3f0c2a7a08228b3e1ece0662.html)
+
               2)执行TOP获取CPU占比,但是在android8.0以上会失效。
+
               具体参考[Android 8.0以后CPU使用率的方案研究](https://cloud.tencent.com/developer/article/1427843)
   开发如何分析：         
               具体参考[安卓性能测试之cpu占用率统计方法总结](https://www.jianshu.com/p/6bf564f7cdf0)：
-### 12）存储
+
 
