@@ -179,6 +179,16 @@ Google Android 官方提供了一套应用核心质量的质量标准，让我�
 FPS大于18帧比率，建议值大于90%，具体参考1）步骤
 
 ### 12）存储
+  存储标准都是一条数据是看不出来的，所以一般是读写1000条数据的时间为度量，根据读写的数据类型（int<String<object）来根据实际情况来确定标准。
+  
+  比如String类型：
+    A）、慢：写200ms 读2ms
+    B）、中：写100ms 读2ms
+    C）、快：写30ms 读2ms
+    
+  开发如何进行测试：  1）、代码侵入测试，直接在数据库操作的前后加入时间计算的代码。
+                   2）、
+    
   参考地址[Android 优化——存储优化](https://cloud.tencent.com/developer/article/1334637)        
   [Android存储优化](https://blog.csdn.net/hujin2017/article/details/103385192)
   - SharePreferences 优化
