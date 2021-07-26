@@ -8,6 +8,7 @@
   
 ## 2、状态保存学习
 主要参考的学习地址：
+参考地址[ViewModel如何保存状态——SavedState源码解析](https://www.jianshu.com/p/589254d66dd9)
 
 参考地址[【背上Jetpack】绝不丢失的状态 androidx SaveState ViewModel-SaveState 分析](https://juejin.cn/post/6844904097351467015)
 
