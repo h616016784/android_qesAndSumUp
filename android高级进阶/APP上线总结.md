@@ -1,4 +1,14 @@
-# 一、常见问题
+# 一、各应用市场地址
+[腾讯（应用宝）开发平台](https://open.tencent.com/)
+
+[华为应用市场开放平台](https://appgallery.huawei.com/#/Featured )
+
+[小米应用市场开放平台](https://app.mi.com/)
+
+[oppo应用商店开放平台](https://store.oppomobile.com/)
+
+[vivo市场开放平台](https://dev.vivo.com.cn/products/pc/index)
+# 二、常见问题
 ## 1、软著名称和app名称不相同
 这个问题在app开发的开始阶段就最好确定下来，如果后期改回非常的麻烦，软著可以设置简称，最好是简称和app的名字一致，这样app在手机上显示效果最好，app的名字或者软著简称最好是4个字。应用宝、华为、小米等
 应用市场都不会通过，只有oppo应用市场通过。
