@@ -17,3 +17,5 @@
 
 有一个简单的理解[Kotlin协程教程（2）：协程作用域与各种builder们](https://segmentfault.com/a/1190000020231598)
 
+这一篇比较综合[Kotlin协程作用域（4）](https://blog.csdn.net/baidu_34012226/article/details/100938585)
+
