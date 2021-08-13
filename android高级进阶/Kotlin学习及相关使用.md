@@ -15,3 +15,5 @@
 
 也可以查看考[kotlin中CoroutineScope CoroutineContext的理解](https://blog.csdn.net/cpcpcp123/article/details/113348214)
 
+有一个简单的理解[Kotlin协程教程（2）：协程作用域与各种builder们](https://segmentfault.com/a/1190000020231598)
+
