@@ -225,6 +225,13 @@ FPS大于18帧比率，建议值大于90%，具体参考1）步骤
       - 调用startActivtySafety（）->startactivity（），此方法里面分为冷启动与热启动，在操作activity的时候，google使用mInstrument这个中间件来操作，当然也可以直接用ams来操作，这么做的目的是为了监控actvity、fragment、application的生命周期的执行过程，我们可以用hook技术反射出mInstrument来监控组件的生命周期，并进行自动化测试等操作。
       - 冷启动使用mInstrument，热启动使用ILauncherApps，通过进程通信通知AMS，冷启动要准备的多
       - AMS在通知Zygote进程 fork出新的ActivityThread进程。之后执行ActivityThread的main方法，此方法执行过程如下：thread.attach(false,startSeq)，将Application与activity绑定；然后执行mgr.attachApplication(mAppThread，startSeq)，通过远端进程重新找到AMS，经过AMS处理后，回调过来，调用HandleBingApplication（）方法，此方法里面调用app=data.info.makeApplication()的方法，这个方法调用了callApplicationCreate（）方法，那么我们的Application的oncreat（）方法就被调用了。application创建好后，通知AMS，再通过Handle回调执行ActivityTread的performActivity（），此方法执行minstrument.newActivity()，最终调用minstrument.callActivityOncreate（），我们的activity的oncreate方法被调用了。
+  
+## 2、app启动优化
+  1）、启动黑白屏问题
+  A、 一般app欢迎页启动会有3秒的缓冲，这是一种伪优化
+  B、使用工具检查启动时间
+  C、
+  
           
 
 
