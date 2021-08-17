@@ -208,5 +208,23 @@ FPS大于18帧比率，建议值大于90%，具体参考1）步骤
               具体参考[Android 8.0以后CPU使用率的方案研究](https://cloud.tencent.com/developer/article/1427843)
   开发如何分析：         
               具体参考[安卓性能测试之cpu占用率统计方法总结](https://www.jianshu.com/p/6bf564f7cdf0)：
+  
+  
+  # 三 App启动原理与优化实践
+  ## 1、android系统初始化过程及应用启动过程
+    1）、 首先开机后，会有一个BootLoader（芯片代码，硬件）的一个引导程序。
+    2）、然后引导程序会加载Linux系统，内核的启动、系统的基本配置等等
+         - init.rc 文件，这个文件记录里要开启的各种服务。
+         - 然后开启Zygote进程，系统的第一个进程。他的进程id为0，所有的进程都都是他孵化出来的，比如创建JVM、JNI的一些方法。
+         - 然后会读取一个init.zygote64.rc文件，开启一个很重要的SystemServer进程，他会开启一些电源相关、音频相关、网络、wifi、多媒体、照相机等相关手机核心服务。
+         - 通过SystemServer，会拉起两个重要的服务：Binder线程池和SystemServiceManager。
+         - 在Zygote和SystemServer和SystemServiceMananger共同的作用下（他们之间会进行跨进程操作），开启ActivityManagerService、WindowService、PackeManagerService、CamoraService、LocationService、传感器服务等等80多个服务。
+         - 然后AMS会用一个Launch.java启动launcher,他是android系统的第一个APP应用，（如果想在launch.java加入自己的代码，如果是做room开发，直接在里面改就可以了；如果是应用开发，那么就要字节码插桩，或者用hock代理某个方法，基本都是反射处理）。
+    3）、launcher的运行
+      - 当用户点击桌面的一个图标时，调用launcher的onclick方法
+      - 调用startActivtySafety（）->startactivity（），此方法里面分为冷启动与热启动
+      - 
+  
+          
 
 
