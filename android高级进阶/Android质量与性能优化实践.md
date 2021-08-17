@@ -215,16 +215,16 @@ FPS大于18帧比率，建议值大于90%，具体参考1）步骤
     1）、 首先开机后，会有一个BootLoader（芯片代码，硬件）的一个引导程序。
     2）、然后引导程序会加载Linux系统，内核的启动、系统的基本配置等等
          - init.rc 文件，这个文件记录里要开启的各种服务。
-         - 然后开启Zygote进程，系统的第一个进程。他的进程id为0，所有的进程都都是他孵化出来的，比如创建JVM、JNI的一些方法。
+         - 然后开启Zygote进程，系统的第一个进程。他的进程id为0，所有的进程都都是他孵化出来的，比如创建JVM、JNI的一些方法。他拥有进程的原型（拥有上下文等），新建的进程都是在进程原型的基础上再加上一些改动，最终创建出新进程的。
          - 然后会读取一个init.zygote64.rc文件，开启一个很重要的SystemServer进程，他会开启一些电源相关、音频相关、网络、wifi、多媒体、照相机等相关手机核心服务。
          - 通过SystemServer，会拉起两个重要的服务：Binder线程池和SystemServiceManager。
          - 在Zygote和SystemServer和SystemServiceMananger共同的作用下（他们之间会进行跨进程操作），开启ActivityManagerService、WindowService、PackeManagerService、CamoraService、LocationService、传感器服务等等80多个服务。
          - 然后AMS会用一个Launch.java启动launcher,他是android系统的第一个APP应用，（如果想在launch.java加入自己的代码，如果是做room开发，直接在里面改就可以了；如果是应用开发，那么就要字节码插桩，或者用hock代理某个方法，基本都是反射处理）。
     3）、launcher的运行
       - 当用户点击桌面的一个图标时，调用launcher的onclick方法
-      - 调用startActivtySafety（）->startactivity（），此方法里面分为冷启动与热启动
-      - 
-  
+      - 调用startActivtySafety（）->startactivity（），此方法里面分为冷启动与热启动，在操作activity的时候，google使用mInstrument这个中间件来操作，当然也可以直接用ams来操作，这么做的目的是为了监控actvity、fragment、application的生命周期的执行过程，我们可以用hook技术反射出mInstrument来监控组件的生命周期，并进行自动化测试等操作。
+      - 冷启动使用mInstrument，热启动使用ILauncherApps，通过进程通信通知AMS，冷启动要准备的多
+      - AMS在通知Zygote进程 fork出新的ActivityThread进程。之后执行ActivityThread的main方法，此方法执行过程如下：thread.attach(false,startSeq)，将Application与activity绑定；然后执行mgr.attachApplication(mAppThread，startSeq)，通过远端进程重新找到AMS，经过AMS处理后，回调过来，调用HandleBingApplication（）方法，此方法里面调用app=data.info.makeApplication()的方法，这个方法调用了callApplicationCreate（）方法，那么我们的Application的oncreat（）方法就被调用了。application创建好后，通知AMS，再通过Handle回调执行ActivityTread的performActivity（），此方法执行minstrument.newActivity()，最终调用minstrument.callActivityOncreate（），我们的activity的oncreate方法被调用了。
           
 
 
