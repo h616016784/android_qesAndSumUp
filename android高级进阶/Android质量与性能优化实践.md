@@ -229,8 +229,17 @@ FPS大于18帧比率，建议值大于90%，具体参考1）步骤
 ## 2、app启动优化
   1）、启动黑白屏问题
   A、 一般app欢迎页启动会有3秒的缓冲，这是一种伪优化
-  B、使用工具检查启动时间
-  C、
+  2)、检查APP启动时间
+  android8.0之前版本，在application的构建函数内写入Debug.startMethodGTracing()代码，记录app开始运行时间，然后在第一个activity的onWindowFocusChanged方法中写入Debug.stopMethodTracing();记录第一帧开始的时候的时间。onWindowFocusChanged是activity第一帧开始时的回调方法。这个Debug会生成一个文件
+  Android8.0之后，这个debug文件
+  3）优化步骤
+   - 优化xml布局
+   - 尽量少的在oncreate里面写代码
+   - activity中的初始化代码尽量写在onWindowFocusChanged方法中，因为这个方法是第一帧显示后的回调。可以在其中进行懒加载
+    比如：懒加载：Viewstup、 hashMap的扩容、 ViewPage、 Pagging、 网络访问对象、 数据库对象等重量级对象
+         预加载：
+         代码问题：严格模式（效果不大，解决代码规范）、
+   
   
           
 
