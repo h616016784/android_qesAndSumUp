@@ -25,7 +25,7 @@ http1.0的每一次请求都会有3次握手、4次分手。
 http1.1在进行一次握手链接后，在一段时间内都不会断开，直到时间结束再断开。
 # 2、OKHttp相关内容
 ## 1）、基本流程
- ![image](https://github.com/h616016784/android_qesAndSumUp/tree/master/vippic) 
+![Okhttp基本流程]( https://github.com/h616016784/android_qesAndSumUp/raw/master/vippic/okhttp基本流程.png )
 
 
 
