@@ -21,7 +21,7 @@
 
 # 1、OSI模型
 
- ![image](https://github.com/h616016784/android_qesAndSumUp/pic/1614916218804.jpg)
+ ![image](https://github.com/h616016784/android_qesAndSumUp/blob/master/pic/gradlefile.png)
 
 
 
