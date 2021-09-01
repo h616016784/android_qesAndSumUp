@@ -21,7 +21,9 @@
 
 总结：不管启动方式有几种，针对冷启动的优化做完，其他启动方式的优化也就完成了。
 
+# 二、黑白屏问题
 
+![app冷启动流程](https://github.com/h616016784/android_qesAndSumUp/blob/master/vippic/App%E9%BB%91%E7%99%BD%E5%B1%8F%E4%BC%98%E5%8C%96.jpg)
 
 
 
