@@ -25,5 +25,14 @@
 
 ![app冷启动流程](https://github.com/h616016784/android_qesAndSumUp/blob/master/vippic/App%E9%BB%91%E7%99%BD%E5%B1%8F%E4%BC%98%E5%8C%96.jpg)
 
+方案1:直接将预览页面去掉或者改为透明的；缺点是还是让用感觉到卡顿。
+
+方案2:将背景主题设置为一张图片，设置windowbackground。
+
+方案2的变种：自定义一个主题，在第一个activiy的theme设置成这个主题。第一个activity开始绘制UI的时候再改回原来的theme；缺点是代码不够优雅。
+
+网易云音乐的做法：自定义一个主题，background设置一个布局，布局里面有一个layer-list达到适配效果；第一个界面底部渐入效果只要在第一界面的布局上的image设置ic_lancher。
+
+为何要这么设计？，答：1、屏幕适配容易，设计简洁。
 
 
