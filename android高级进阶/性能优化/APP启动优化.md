@@ -37,3 +37,17 @@
 
 # 三、启动优化
 
+## 1、启动时间的测量
+方式1、系统日志的输出（app的启动时间相对比较准确）
+
+在androidstudio的logcat里面，搜索ActivityManager的时候，过滤出来的日志中查看“Displayed 包名/activity名称 时间”，得到启动的时间
+
+方式2、通过ADB的命令方式获取
+
+在terminal中输入 adb shell am start -w 包名/.activity名称 后得到数据：thistime totaltime waittime；有时得到的数据是0，是因为已经启动了，要得到正确的数据，要先杀掉app进程，再输入这个命令，就可以得到数据了。需要注意的是：有的电脑会多显示一个launchmode的方式（冷启动、热启动、温启动）
+
+其中thistime：代表最后一个activity的启动时间；TotalTime： 代表所有Activity的启动时间；WaitTime： 所有时间：ams启动activity总耗时；
+
+方式3、手动获取
+
+在Application的onattach方法里面开始计时，然后在第一个activity的onresume中记录结束时间，在onwindowfocuschange（首帧绘制时间）中也记录结束时间，在treeobserver中也记录结束时间；注意：此方法只能记录app内部总时间，是app启动时间的一大部分。
