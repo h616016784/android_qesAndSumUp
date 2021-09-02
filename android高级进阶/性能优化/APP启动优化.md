@@ -51,3 +51,22 @@
 方式3、手动获取
 
 在Application的onattach方法里面开始计时，然后在第一个activity的onresume中记录结束时间，在onwindowfocuschange（首帧绘制时间）中也记录结束时间，在treeobserver中也记录结束时间；注意：此方法只能记录app内部总时间，是app启动时间的一大部分。
+
+## 2、优化步骤
+
+    APP启动的流程 MNApplication启动->onCreate()->SplashActivity(onCreate())->MainActivity(onCreate())->MainActivity(onResume())，我们只能在这里面来处理
+    
+    先来耗时统计
+    
+        // 方法耗时统计
+        Debug.startMethodTracing("Launcher");
+        代码。。。。。。。
+        Debug.stopMethodTracing();
+        此方法会把 代码部分 运行时间的相关信息保存到sdcard中的Launcher.trace文件中，然后把这个文件直接拖到androidstudio中可直接查看
+        
+    优化相关项：
+       - 有些资源懒加载，异步加载；
+       - 并不是所有资源都能这么做；资源要用，没初始化完怎么办？
+       - 如果你初始化的资源跟UI线程有关，也不能放在子线程；
+           1：把资源拆分；
+     
