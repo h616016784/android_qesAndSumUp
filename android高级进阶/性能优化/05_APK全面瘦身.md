@@ -11,9 +11,35 @@ AndroidManifest.xml: 包含了主要的Android配置文件。这个文件列出�
 
 # 二、瘦身纬度
 ## 1、图片优化
+  - 资源图片由高清变成一般的（根据需求），PNG>JPG>WEP,这里涉及到UI
+  - 单色的背景可用shape来画，也增加了适配性
 ## 2、无用资源剔除
+  一般都不要全部剔除，使用android studio的工具非常方便
+ 
 ## 3、国际化资源配置优化
+  多语言的设置会有很多别的国家的语言，如果不需要，可以去掉
 ## 4、动态库打包优化
+  优化是整个瘦身的重头戏
 ## 5、代码压缩/代码混淆
 ## 6、资源压缩/资源混淆
+
+# 三、图片优化之SVG
+ ## 1、导入
+ SVG(Scalable Vector Graphics)，可缩放矢量图。SVG不会像位图一样因为缩放而让图片质量下降。优点在于可以减小APK的尺寸。常用于简单小图标。缺点是加载的时候会比较耗时
+svg是由xml定义的，标准svg根节点为<svg>。
+Android中只支持 <vector>，我们可以通过 
+vector 将svg的根节点 <svg> 转换为 <vector>。在Android Studio中打开工程，在res目录中点击右键。
+## 2、批量转换
+  如果有多个svg需要转换为android的vector，则可以通过第三方工具 svg2vector 进行批量转换。
+  
+  执行转换命令：
+
+java -jar svg2vector-cli-1.0.0.jar -d . -o a -h 20 -w 20 
+
+-d 指定svg文件所在目录
+-o 输出android vector图像目录
+-h 设置转换后svg的高
+-w 设置转换后svg的宽
+
+
 
