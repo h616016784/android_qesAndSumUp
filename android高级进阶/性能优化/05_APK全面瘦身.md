@@ -41,5 +41,46 @@ java -jar svg2vector-cli-1.0.0.jar -d . -o a -h 20 -w 20
 -h 设置转换后svg的高
 -w 设置转换后svg的宽
 
+ ## 3、注意事项
+  
+不支持的功能举例：
+
+滤镜效果：不支持投影，模糊和颜色矩阵等效果。
+  
+文本：建议使用其他工具将文本转换为形状。
+  
+5.0以下不能用
+  ## 4、兼容适配
+  Android 5.0（API 21）之前的版本不支持矢量图，使用 Vector Asset Studio 有两种方式适配。
+  
+方式一：生成 png 格式的图片
+
+Vector Asset Studio 可在构建时 针对每种屏幕密度将矢量图转换为不同大小的位图，在 build.gradle 中配置如下： 
+
+SVG 适用于 Gradle 插件1.5 及以上版本；
+
+android{
+    defaultConfig{
+        // 5.0（API 21）版本以下,将svg图片生成指定维度的png图片
+        generatedDensities = ['xhdpi','xxhdpi']
+    }
+}
+  
+方式二：支持库
+
+在 build.gradle 中配置如下，适用于 Gradle 插件2.0及以上版本：
+android{
+    // Gradle Plugin 2.0+
+    defaultConfig{
+        // 利用支持库中的 VectorDrawableCompat 类,可实现 2.1 版本及更高版本中支持 VectorDrawable
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+dependencies {
+  // 支持库版本需要是 23.2 或更高版本
+  compile 'com.android.support:appcompat-v7:23.2.0'
+}
+
+使用矢量图 必须使用 app:srcCompat 属性，而不是 android:src
 
 
