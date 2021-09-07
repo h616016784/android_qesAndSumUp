@@ -15,9 +15,22 @@ AndroidManifest.xml: 包含了主要的Android配置文件。这个文件列出�
   - 单色的背景可用shape来画，也增加了适配性
 ## 2、无用资源剔除
   一般都不要全部剔除，使用android studio的工具非常方便
- 
+ 注意！！！！
+动态获取方式:
+getResources().getIdentifier("name","defType",getPackageName());
+
+  我们可以通过加入白名单的形式，把我们需要保留的文件。方法是搜索unused resources，然后操作
 ## 3、国际化资源配置优化
   多语言的设置会有很多别的国家的语言，如果不需要，可以去掉
+  
+  添加如下，可以筛选语言
+  android{
+    defaultConfig{
+        // 只适配英语
+        resConfigs 'en'
+    }
+}
+
 ## 4、动态库打包优化
   优化是整个瘦身的重头戏
 ## 5、代码压缩/代码混淆
@@ -82,5 +95,11 @@ dependencies {
 }
 
 使用矢量图 必须使用 app:srcCompat 属性，而不是 android:src
+  
+   ## 5、颜色修改
+虽然我们前面说了，可以直接在 xml 文件中修改矢量图的颜色，但是并不建议直接修改，我们一般让矢量图为黑色，然后用 Tint 着色器去修改矢量图的颜色。
+  
+创建两个选择器，然后正常使用即可
+
 
 
