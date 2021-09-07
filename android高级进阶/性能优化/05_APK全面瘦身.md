@@ -32,9 +32,39 @@ getResources().getIdentifier("name","defType",getPackageName());
 }
 
 ## 4、动态库打包优化
-  优化是整个瘦身的重头戏
+  优化是整个瘦身的重头戏。
+  
+  首先我们需要知道 so文件是由ndk编译出来的动态库，是 c/c++ 写的，所以不是跨平台的。即每一个平台需要使用对应的so库。
+
+ABI 是应用程序二进制接口简称（Application Binary Interface），定义了二进制文件（尤其是.so文件）如何运行在相应的系统平台上，从使用的指令集，内存对齐到可用的系统函数库。
+
+在Android 系统上，每一个CPU架构对应一个ABI：armeabi，armeabi-v7a，arm64- v8a，x86，x86_64，mips，mips64。
+
+  现在我们一般只需要配置armeabi-v7a即可。
+  
+  android{
+    defaultConfig{
+        ndk{
+            abiFilters "armeabi-v7a"
+        }
+    }
+}
+
 ## 5、代码压缩/代码混淆
+将 minifyEnabled 设置为 true 即可 .
+
+但是我们会发现，运行时会报错，因为 minifyEnabled 即压缩了代码，也混淆了代码，所以我们需要处理下混淆.
+
+
 ## 6、资源压缩/资源混淆
+
+资源压缩只与代码压缩协同工作。
+
+buildTypes{
+  release{
+    shrinkResources true
+  }
+}
 
 # 三、图片优化之SVG
  ## 1、导入
