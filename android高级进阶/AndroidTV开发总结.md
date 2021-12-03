@@ -221,4 +221,14 @@ TV 设备为应用提供了一组有限的导航控件。能否为您的 TV 应�
  #### A、Baseline requirements（基线需求）
  
  ## 三、构建 TV 播放应用
+ 
+  ## 四、TV 应用之实践
+  ### 1、leanback使用与理解
+  
+  基础使用可参考[AndroidTv Home界面实现原理（一）——Leanback 库的使用](https://cloud.tencent.com/developer/article/1128174?from=article.detail.1564402)
+              [AndroidTv Home界面实现原理（二）——Leanback 库的主页卡位缩放动画源码解析](https://cloud.tencent.com/developer/article/1128153?from=article.detail.1128174)
+              
+              [聊一聊 Leanback 中的 HorizontalGridView](http://events.jianshu.io/p/52f67a414a10)
+  
+  
   
