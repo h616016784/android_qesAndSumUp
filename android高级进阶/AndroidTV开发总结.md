@@ -229,6 +229,12 @@ TV 设备为应用提供了一组有限的导航控件。能否为您的 TV 应�
               [AndroidTv Home界面实现原理（二）——Leanback 库的主页卡位缩放动画源码解析](https://cloud.tencent.com/developer/article/1128153?from=article.detail.1128174)
               
               [聊一聊 Leanback 中的 HorizontalGridView](http://events.jianshu.io/p/52f67a414a10)
+  ### 2、从0开始，从链接机顶盒开始，开发TV的基本知识
+  参考地址[Android TV 开发一览](https://juejin.cn/post/6978726982137675812)
+  ### 3、VerticalGridView的使用
+  参考地址[Androdi TV开发之VerticalGridView](https://blog.csdn.net/ganduwei/article/details/108227375)
+  
+  [HorizontalGridView和VerticalGridView使用详解](https://blog.csdn.net/weixin_42484608/article/details/91554814)
   
   
   
