@@ -236,5 +236,16 @@ TV 设备为应用提供了一组有限的导航控件。能否为您的 TV 应�
   
   [HorizontalGridView和VerticalGridView使用详解](https://blog.csdn.net/weixin_42484608/article/details/91554814)
   
+  ##### 1)、VerticalGridView获取数据闪屏的问题 
+  可以参考如下方法
+  
+  参考地址[Leanback+DiffCallback解决数据更新闪屏](https://www.jianshu.com/p/9a3fe5716a44)
+  
+  参考地址[局部刷新架构代码分析](https://blog.csdn.net/dfvbrtdhy/article/details/113518025)
+  
+  ##### 2)\Androidx 下 Fragment 懒加载的新实现
+  
+  参考地址[Androidx 下 Fragment 懒加载的新实现](https://juejin.cn/post/6844904050698223624#heading-6)
+  
   
   
