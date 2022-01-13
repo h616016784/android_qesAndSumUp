@@ -78,6 +78,10 @@ EventBus： 我们非常熟悉的事件总线型的通信框架，非常灵活�
 
 构建组件的生命周期模型，构建的模型持有整个app的Application引用，同时提供三个基础方法：生命周期创建、生命周期停止以及生命周期的优先级设置。
 具体参考地址[Android项目模块化/组件化开发（非原创）](https://www.cnblogs.com/WUXIAOCHANG/p/11015391.html)
+
+组建生命周期的初始化可以参考[多个Module的Application初始化共存问题](https://blog.csdn.net/weixin_43115440/article/details/106057876),如果业务简单，可以参考这种方式来做
+
+如果业务复杂，则最好是引入第三方的工具，可参考这两篇[多模块中application的初始化方式](https://juejin.cn/post/6844904017752145927),[组件化多Module的Application解决方案](https://www.jianshu.com/p/e5b37e62aff6)
 ### e、模块在调试与发布模式之间的切换
 项目开发时，一般提供调试环境与正式发布环境。在不同的环境中，app的有些功能是不需要用到的，或者是有所不同的。另外，在模块化开发时，有些业务模块在调试时，可以作为单独的app运行调试，不必每次都编译所有的模块，极大的加快编译速度，节省时间成本
 具体可参考地址[Android项目模块化/组件化开发（非原创）](https://www.cnblogs.com/WUXIAOCHANG/p/11015391.html)
